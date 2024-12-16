@@ -1,4 +1,6 @@
-Summary: This page describes the steps to follow in order to create the MVP in a week.
+#Summary: 
+
+This page describes the steps to follow in order to create the MVP in a week.
 
 # Outline line of Tasks
 ZCW Passion Project methodology for PassionProj Week.
