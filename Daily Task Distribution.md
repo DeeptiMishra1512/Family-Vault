@@ -1,4 +1,4 @@
-#Summary: 
+# Summary: 
 
 This page describes the steps to follow in order to create the MVP in a week.
 
