@@ -9,6 +9,9 @@ https://lucid.app/lucidchart/0a701e0e-990c-48ef-ae16-73259171df9f/edit?viewport_
 # Link to DataModel:
 https://lucid.app/lucidchart/223a272a-1260-4598-9e00-e8065834e610/edit?viewport_loc=-316%2C43%2C2677%2C1079%2C0_0&invitationId=inv_c4468d96-fbe7-4cb1-9238-f619916d91a9
 
+# Link to Kanban Board
+https://github.com/users/DeeptiMishra1512/projects/4/views/1
+
 # Link to One-Pager:
 https://docs.google.com/document/d/1sXXrsxSMFizFZxYC4n0N_pZgV4AkGzozDT4AAo4Cq5s/edit?tab=t.0
 
