@@ -8,3 +8,34 @@ create table Contact(Contact_Id varchar(200) Not Null,User_Id varchar(255),Name 
 create table UserGroupAssociation(UserGroupAssociation_Id varchar(255) Not Null,User_Id varchar(255),Group_Id varchar(255), Primary Key(UserGroupAssociation_Id),Foreign Key(User_Id) References VaultUser(User_Id), Foreign Key(Group_Id) References Usergroup(Group_Id));
 create table UserProfile(Profile_Id varchar(255) Not Null,User_Id varchar(255),First_Name varchar(500),Last_Name varchar(500),Birthdate Date,Profile_Desc varchar(5000), Primary Key(Profile_Id), Foreign Key(User_Id) References VaultUser(User_Id));
 Create table ActivityTracker(Activity_Id varchar(100) Not Null,Media_Id varchar(255) Not Null,User_Id varchar(255),Likes Boolean,Comment varchar(2000),ActivityTime TimeStamp,Primary Key(Activity_Id),Foreign Key(User_Id) References VaultUser(User_Id),Foreign Key(Media_Id) References Media(Media_Id) );
+
+
+insert into VaultUser(User_Id,Username,password,Email_Id) values('deepti15','DeeptiMishra','Familyvaultrocks!','deepti86mishra@gmail.com'),
+                                                                ('arjun28','arjunpatel','F@milyvaultrocks!','arjun@gmail.com'),
+                                                                ('aarav','aaravarjun','F@mily!','aaravarjun@gmail.com');
++----------+--------------+-------------------+--------------------------+
+| User_Id  | Username     | Password          | Email_Id                 |
++----------+--------------+-------------------+--------------------------+
+| aarav    | aaravarjun   | F@mily!           | aaravarjun@gmail.com     |
+| arjun28  | arjunpatel   | F@milyvaultrocks! | arjun@gmail.com          |
+| deepti15 | DeeptiMishra | Familyvaultrocks! | deepti86mishra@gmail.com |
++----------+--------------+-------------------+--------------------------+
+
+
+ insert into UserProfile values('PID001','deepti15','Deepti','Mishra','1986-12-15','I feel happy'),
+                               ('PID002','arjun28','Arjun','Patel','1986-10-28','I feel happy'),
+                               ('PID003','aarav','Aarav','Arjun','2020-03-05','I feel happy');
++------------+----------+------------+-----------+------------+--------------+-----------------+
+| Profile_Id | User_Id  | First_Name | Last_Name | Birthdate  | Profile_Desc | Profile_Picture |
++------------+----------+------------+-----------+------------+--------------+-----------------+
+| PID001     | deepti15 | Deepti     | Mishra    | 1986-12-15 | I feel happy | NULL            |
+| PID002     | arjun28  | Arjun      | Patel     | 1986-10-28 | I feel happy | NULL            |
+| PID003     | aarav    | Aarav      | Arjun     | 2020-03-05 | I feel happy | NULL            |
++------------+----------+------------+-----------+------------+--------------+-----------------+
+
+  insert into usergroup values('G0001','FantasticUs','Stay Happy');
+  +----------+-------------+-------------+
+  | Group_Id | GroupName   | Description |
+  +----------+-------------+-------------+
+  | G0001    | FantasticUs | Stay Happy  |
+  +----------+-------------+-------------+
