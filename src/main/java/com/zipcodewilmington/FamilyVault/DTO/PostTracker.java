@@ -1,6 +1,7 @@
 package com.zipcodewilmington.FamilyVault.DTO;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 public class PostTracker {
 
@@ -20,10 +21,9 @@ public class PostTracker {
  private String postId;
  private String mediaId;
  private String userId;
- private int likesCount;
- private String comment;
+ private List<VaultUser> likesCount;
+ private List<VaultUser> comment;
  private Timestamp activityTime;
-
 
     public String getPostId() {
         return postId;
@@ -49,19 +49,19 @@ public class PostTracker {
         this.userId = userId;
     }
 
-    public int getLikesCount() {
+    public List<VaultUser> getLikesCount() {
         return likesCount;
     }
 
-    public void setLikesCount(int likesCount) {
+    public void setLikesCount(List<VaultUser> likesCount) {
         this.likesCount = likesCount;
     }
 
-    public String getComment() {
+    public List<VaultUser> getComment() {
         return comment;
     }
 
-    public void setComment(String comment) {
+    public void setComment(List<VaultUser> comment) {
         this.comment = comment;
     }
 
@@ -72,5 +72,4 @@ public class PostTracker {
     public void setActivityTime(Timestamp activityTime) {
         this.activityTime = activityTime;
     }
-
 }
