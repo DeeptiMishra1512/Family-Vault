@@ -1,7 +1,15 @@
-package com.zipcodewilmington.FamilyVault.DTO;
+package com.zipcodewilmington.FamilyVault.Entity;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import java.sql.Date;
 
+
+
+@Entity
+@Table(name = "media")
 public class Media {
 /**
  * +-------------+--------------+------+-----+---------+-------+
@@ -15,10 +23,16 @@ public class Media {
  * +-------------+--------------+------+-----+---------+-------+
  */
 
+@Id
+@Column(name = "Media_Id")
 private String mediaId;
+@Column(name = "User_Id")
 private String userId;
+@Column(name = "Type")
 private String type;
+@Column(name = "File_Path")
 private String filePath;
+@Column(name = "Upload_date")
 private Date uploadDate;
 
 

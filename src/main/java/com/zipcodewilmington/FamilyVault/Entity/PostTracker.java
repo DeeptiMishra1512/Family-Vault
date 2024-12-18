@@ -1,8 +1,14 @@
-package com.zipcodewilmington.FamilyVault.DTO;
+package com.zipcodewilmington.FamilyVault.Entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import java.sql.Timestamp;
-import java.util.List;
 
+@Entity
+@Table(name = "PostTracker")
 public class PostTracker {
 
 /**
@@ -18,11 +24,19 @@ public class PostTracker {
 
  */
 
+@Id
+@Column(name = "Post_Id")
  private String postId;
+
+@Column(name = "Media_Id")
  private String mediaId;
+@Column(name = "User_Id")
  private String userId;
- private List<VaultUser> likesCount;
- private List<VaultUser> comment;
+ @Column(name = "Likes")
+ private int likesCount;
+ @Column(name = "Comment")
+ private String comment;
+ @Column(name = "ActivityTime")
  private Timestamp activityTime;
 
     public String getPostId() {
@@ -49,19 +63,19 @@ public class PostTracker {
         this.userId = userId;
     }
 
-    public List<VaultUser> getLikesCount() {
+    public int getLikesCount() {
         return likesCount;
     }
 
-    public void setLikesCount(List<VaultUser> likesCount) {
+    public void setLikesCount(int likesCount) {
         this.likesCount = likesCount;
     }
 
-    public List<VaultUser> getComment() {
+    public String getComment() {
         return comment;
     }
 
-    public void setComment(List<VaultUser> comment) {
+    public void setComment(String comment) {
         this.comment = comment;
     }
 

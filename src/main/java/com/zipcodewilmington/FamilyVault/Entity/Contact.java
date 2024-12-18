@@ -1,4 +1,5 @@
-package com.zipcodewilmington.FamilyVault.DTO;
+package com.zipcodewilmington.FamilyVault.Entity;
+
 
 public class Contact {
 
