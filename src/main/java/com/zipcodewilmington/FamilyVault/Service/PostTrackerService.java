@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface PostTrackerService {
 
-    PostTracker getPost(PostTracker postId);
+    PostTracker getPost(String postId);
     PostTracker savePost(PostTracker postTracker);
 }

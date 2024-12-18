@@ -12,7 +12,7 @@ public class PostTrackerController {
     private PostTrackerService postTrackerService;
 
     @GetMapping("/getPost")
-    public Media getMedia(@RequestParam String postId){
+    public PostTracker getPost(@RequestParam String postId){
         return postTrackerService.getPost(postId);
     }
 
