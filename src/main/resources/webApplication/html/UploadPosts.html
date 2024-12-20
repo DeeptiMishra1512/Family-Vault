@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload with JavaScript</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div id="header">
+    <!--    <div class="lesson-link"><img src="../logos/Vault.png" alt="Javascript"/></div>-->
+    <div class="title"><h1>WelCome To Family Vault<br></h1></div>
+    <!--    <div class="zip-link"><img src="../logos/UserImage.png" alt="Zipcode Wilmington"/></div>-->
+
+
+</div>
+<div id="main">
+<div id="left-panel">
+
+    <button class="nav-button" onclick="location.href='index.html'">Go Back</button>
+
+</div>
+
+<!-- Right Panel -->
+<div id="right-panel">
+
+<!-- Form for file upload -->
+<form id="upload-form">
+    <label for="file-upload">Choose a file to upload:</label>
+    <input type="file" id="file-upload" name="file-upload" accept="image/*, .pdf, .docx, .txt">
+    <br><br>
+
+    <!-- Display selected file name -->
+    <p id="file-name">No file selected</p>
+
+    <!-- Submit button -->
+    <button type="button" id="upload-button">Upload File</button>
+</form>
+
+<p id="upload-status"></p>
+</div>
+</div>
+</body>
+</html>

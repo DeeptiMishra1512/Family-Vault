@@ -1,123 +1,68 @@
-/* ZipcodeWilmington 2015 */
 
-/* ===================================== FONTS ========================================= */
-@import url(https://fonts.googleapis.com/css?family=Droid+Sans:400,700);
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column; /* Stack header and main sections vertically */
+            height: 100vh; /* Full viewport height */
+        }
 
+        /* Header styles */
+        #header {
+            background-color: #a569bd;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 1.5rem;
+        }
 
-/* ===================================== GLOBAL STYLE ========================================= */
-* {
-    margin: 0;
-    padding: 0;
-}
+        /* Main container for left and right panels */
+        #main {
+            display: flex; /* Side-by-side layout for left and right panels */
+            flex: 1; /* Take remaining space after header */
+        }
 
-body { font: 14px/1.4 arial, sans-serif; background-color: #F5F5F5;);}
+        /* Left panel */
+        #left-panel {
+            width: 15%; /* 10% of the main container */
+            background-color: white;
+            border-right: 1px solid #cccccc;
+            padding: 10px;
+            overflow-y: auto; /* Add scrolling if content exceeds height */
+        }
+        /* Left panel button*/
+        .nav-button {
+            background-color: #a569bd; /* Button background color */
+            color: white; /* Text color */
+            padding: 15px; /* Internal spacing */
+            border: none;
+            text-align: center;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-bottom: 10px; /* Spacing between buttons */
+            flex-grow: 1;
+            width : 210px;
+        }
+         /* Ensure all buttons are the same size */
+        .nav-button {
+            height: 50px; /* Fixed button height */
+        }
 
-article, aside, figure, footer, header, nav, section { display: block; }
-a:link, a:visited {
-    text-decoration: none;
+        /* Last button removes bottom margin */
+        .nav-button:last-child {
+            margin-bottom: 0;
+        }
 
-    color: inherit;
-}
-
-a:hover, a:active {
-    text-decoration: none;
-
-    color: inherit;
-}
-
-.group:before,
-.group:after {
-    content:"";
-    display:table;
-}
-.group:after {
-    clear:both;
-}
-.group {
-    zoom:1; /* For IE 6/7 (trigger hasLayout) */
-}
-
-#main:focus {
-    outline: none;
-}
-
-
-/* ===================================== HEADER STYLE ========================================= */
-
-.main-header {
-    width: 100%;
-    height: 150px;
-    
-    background-color: #6a5acd;}
-
-.main-header .title {
-    float: left;
-    text-transform: uppercase;
-
-    font-family: 'Droid Sans', sans-serif;
-    font-weight: 400;
-    font-size: 1em;
-
-    width: 55%;
-
-    padding-left: -100%;
-
-    color: #fff;
-
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.main-header .zip-link {
-    float: right;
-
-    width: 16%;
-    height: 100%;
-
-    background-color: #6a5acd;
-}
-
-.main-header .lesson-link {
-    float: left;
-
-    width: 20%;
-    height: 100%;
-
-  /*  background-color: #3c790a;*/
-    background-color: #6a5acd;
-
-}
-
-.main-header div {
-    /* fix blurriness of children due to them
-       being placed on half pixels */
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-}
-
-.main-header div img {
-    display: block;
-
-    margin: auto;
-
-    width: 55%;
-
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-/* page styles */
-article {margin: 5%;}
-article p { margin-bottom: 20px;}
-section {margin: 5%;}
-h1 {font-weight: bold;}
-ol {list-style-type: lower-alpha; margin-left:15px}
-ol li {margin-bottom: 15px;}
-ul li {margin-left: 20px; margin-bottom: 0;}
-#result {border: 1px #aaa solid; height: 300px; width:100%; background:#eee; margin-bottom: 15px;}
+        /* Hover effect */
+        .nav-button:hover {
+            background-color: #555; /* Slightly lighter on hover */
+        }
 
 
-
+        /* Right panel */
+        #right-panel {
+            flex: 1; /* Take up remaining space */
+            background-color: white;
+            padding: 10px;
+            overflow-y: auto; /* Add scrolling if content exceeds height */
+        }

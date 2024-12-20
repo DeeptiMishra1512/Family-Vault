@@ -3,8 +3,7 @@ import jakarta.persistence.*;
 
 
 @Entity
-@Table(name = "VaultUser")
-
+@Table(name = "vault_user")
 public class VaultUser {
 
     /***
@@ -20,7 +19,6 @@ public class VaultUser {
     @Id
     @Column(name = "User_Id")
    private String userId;
-
     @Column(name = "Username")
    private String userName;
     @Column(name = "Password")
