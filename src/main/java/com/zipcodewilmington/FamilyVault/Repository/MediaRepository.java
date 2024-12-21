@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface MediaRepository extends JpaRepository<Media, String> {
+public interface MediaRepository extends JpaRepository<Media, Integer> {
 
     @Query(
             value = "SELECT * FROM MEDIA WHERE User_Id = :userId",

@@ -9,6 +9,5 @@ public class FamilyVault {
     public static void main(String[] args) {
         System.out.println("Welcome To Family Vault!");
         SpringApplication.run(FamilyVault.class, args);
-
     }
 }

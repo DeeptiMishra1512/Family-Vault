@@ -1,8 +1,5 @@
 package com.zipcodewilmington.FamilyVault.Entity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.sql.Date;
 
@@ -16,7 +13,7 @@ public class Media {
  * | Field       | Type         | Null | Key | Default | Extra |
  * +-------------+--------------+------+-----+---------+-------+
  * | Media_Id    | varchar(200) | NO   | PRI | NULL    |       |
- * | User_Id     | varchar(255) | YES  | MUL | NULL    |       |
+ * | User_Id     | varchar(255) | YES  |     | NULL    |       |
  * | Type        | varchar(100) | YES  |     | NULL    |       |
  * | File_Path   | varchar(500) | NO   |     | NULL    |       |
  * | Upload_date | date         | YES  |     | NULL    |       |
@@ -24,8 +21,9 @@ public class Media {
  */
 
 @Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
 @Column(name = "Media_Id")
-private String mediaId;
+private int mediaId;
 @Column(name = "User_Id")
 private String userId;
 @Column(name = "Type")
@@ -38,11 +36,11 @@ private Date uploadDate;
 private String description;
 
 
-    public String getMediaId() {
+    public int getMediaId() {
         return mediaId;
     }
 
-    public void setMediaId(String mediaId) {
+    public void setMediaId(int mediaId) {
         this.mediaId = mediaId;
     }
 

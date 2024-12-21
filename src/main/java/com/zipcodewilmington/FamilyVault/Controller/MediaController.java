@@ -16,7 +16,7 @@ public class MediaController {
     private MediaService mediaService;
 
     @GetMapping("/getMedia")
-    public Media getMedia(@RequestParam String mediaId){
+    public Media getMedia(@RequestParam Integer mediaId){
         return mediaService.getMedia(mediaId);
     }
 

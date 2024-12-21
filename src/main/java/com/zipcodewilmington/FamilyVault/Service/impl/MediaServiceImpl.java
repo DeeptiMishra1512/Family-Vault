@@ -16,7 +16,7 @@ public class MediaServiceImpl implements MediaService {
     private MediaRepository mediaRepository;
 
     @Override
-    public Media getMedia(String mediaId){
+    public Media getMedia(Integer mediaId){
         Optional<Media> media =  mediaRepository.findById(mediaId);
         return media.orElse(null);
     }

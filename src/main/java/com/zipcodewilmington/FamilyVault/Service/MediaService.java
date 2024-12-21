@@ -8,7 +8,7 @@ import java.util.Optional;
 
 @Service
 public interface MediaService {
-    Media getMedia(String mediaId);
+    Media getMedia(Integer mediaId);
     List<Media> findAllMedia(String userId);
     Optional<Media> saveMedia(Media media);
 
