@@ -34,6 +34,8 @@ private String type;
 private String filePath;
 @Column(name = "Upload_date")
 private Date uploadDate;
+@Column (name = "description")
+private String description;
 
 
     public String getMediaId() {
@@ -76,5 +78,11 @@ private Date uploadDate;
         this.uploadDate = uploadDate;
     }
 
+    public String getDescription() {
+        return description;
+    }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
