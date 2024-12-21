@@ -16,6 +16,9 @@
                      }
                  });
 
+                 /*********###########################################################################********/
+                /*********######## CHECK THE ERROR MESSAGE DISPLAY AND UPLOAD STATUS DISPLAY#########********/
+                 /*********#########################################################################********/
                  // Handle file upload via JavaScript
                  uploadButton.addEventListener('click', function() {
                      const file = fileInput.files[0];
