@@ -1,4 +1,4 @@
 package com.zipcodewilmington.FamilyVault.Repository;
 
-public class UserProfileRepository {
+public interface UserProfileRepository {
 }
