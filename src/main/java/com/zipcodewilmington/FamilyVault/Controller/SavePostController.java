@@ -55,10 +55,10 @@ public class SavePostController {
             }
 
             if (video != null && !video.isEmpty()) {
-                String videoPath = "/Users/dmishra/DeeptiProjects/Family-Vault/src/main/resources/webApplication/Videos/" + video.getOriginalFilename();
-                String imagePathDB = "../Videos/" + image.getOriginalFilename();
+                String videoPath = "/Users/dmishra/DeeptiProjects/Family-Vault/src/main/resources/webApplication/Video/" + video.getOriginalFilename();
+                String videoPathDB = "../Video/" + video.getOriginalFilename();
                 video.transferTo(new File(videoPath));
-                media.setFilePath(videoPath);
+                media.setFilePath(videoPathDB);
                 media.setUserId(userId);
                 media.setType("Video");
                 media.setUploadDate(Date.valueOf(formattedDate));

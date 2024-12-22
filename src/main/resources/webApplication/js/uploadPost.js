@@ -32,7 +32,7 @@
             }
 
             // Validate file type
-            const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'text/plain'];
+            const allowedTypes = ['image/jpeg', 'image/png', 'video/quicktime','video/mp4','application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'text/plain'];
             if (!allowedTypes.includes(file.type)) {
                 uploadStatus.textContent = 'Invalid file type. Please select an image, PDF, DOCX, or text file.';
                 return;
@@ -41,7 +41,13 @@
             // Create FormData object
             const formData = new FormData();
             formData.append('description', description);
-            formData.append('image', file);
+            if (file.type === 'video/mp4' || 'video/quicktime'){
+               formData.append('video', file);
+            }else{
+               formData.append('image', file);
+            }
+
+
             formData.append('userId', 'deepti15');
 
             // AJAX request to server

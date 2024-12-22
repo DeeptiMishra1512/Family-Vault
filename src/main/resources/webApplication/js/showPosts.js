@@ -1,35 +1,35 @@
 window.onload = fetchAllPosts();
 
 
-     function fetchData() {
-         fetch('http://localhost:8080/getMedia?mediaId=MD001')
-             .then(response => response.json())
-             .then(data => {
-                 // Create a div element
-                 var div = document.createElement("div");
-                 // Create an image element
-                 var img = document.createElement("img");
-                 // Set width and height
-                 div.style.width = "200px"; // Set width to 200 pixels
-                 div.style.height = "150px"; // Set height to 150 pixels
-
-                 var text = document.createElement("label");
-                 document.getElementById('right-panel').style.width = "150px"; // Set width to 200 pixels
-                 document.getElementById('right-panel').style.height = "600px"; // Set height to 150 pixels
-
-                 text.textContent = " "
-                 // Add image src property
-                 img.src = data.filePath;
-                 // Append div as a child to #result
-                 document.getElementById('right-panel').appendChild(div);
-                 // Append image as a child to the div
-                 div.appendChild(text);
-                 div.appendChild(img);
-             })
-             .catch(error => {
-                 console.error('Error fetching data:', error);
-             });
-     }
+//     function fetchData() {
+//         fetch('http://localhost:8080/getMedia?mediaId=MD001')
+//             .then(response => response.json())
+//             .then(data => {
+//                 // Create a div element
+//                 var div = document.createElement("div");
+//                 // Create an image element
+//                 var img = document.createElement("img");
+//                 // Set width and height
+//                 div.style.width = "200px"; // Set width to 200 pixels
+//                 div.style.height = "150px"; // Set height to 150 pixels
+//
+//                 var text = document.createElement("label");
+//                 document.getElementById('right-panel').style.width = "150px"; // Set width to 200 pixels
+//                 document.getElementById('right-panel').style.height = "600px"; // Set height to 150 pixels
+//
+//                 text.textContent = " "
+//                 // Add image src property
+//                 img.src = data.filePath;
+//                 // Append div as a child to #result
+//                 document.getElementById('right-panel').appendChild(div);
+//                 // Append image as a child to the div
+//                 div.appendChild(text);
+//                 div.appendChild(img);
+//             })
+//             .catch(error => {
+//                 console.error('Error fetching data:', error);
+//             });
+//     }
 
 function fetchAllPosts() {
     const userId = "deepti15";
@@ -79,7 +79,6 @@ function fetchAllPosts() {
                 div.style.boxSizing = "border-box";
                 div.style.display = "flex";
                 div.style.flexDirection = "column";
-                div.style.alignItems = "flex";
                 div.style.backgroundColor = "#f9f9f9";
                 div.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
 
@@ -105,33 +104,55 @@ function fetchAllPosts() {
                 userContainer.appendChild(userIcon);
                 userContainer.appendChild(userLabel);
 
-                // Post Image
-                const img = document.createElement("img");
-                img.src = item.filePath;
-                img.alt = item.title || "Image";
-                img.style.width = "100%";
-                img.style.height = "auto";
-                img.style.maxWidth = "800px";
-                img.style.borderRadius = "8px";
-                img.style.marginBottom = "10px";
+                // Dynamically create media element (video or image)
+                let mediaElement;
+                if (item.type === "Video") {
+                    // Create video element
+                    mediaElement = document.createElement("video");
+                    mediaElement.controls = true;
+                    mediaElement.style.width = "100%";
+                    mediaElement.style.height = "auto";
+                    mediaElement.style.maxWidth = "800px";
+                    mediaElement.style.borderRadius = "8px";
+                    mediaElement.style.marginBottom = "10px";
+
+                    const source = document.createElement("source");
+                    source.src = item.filePath;
+                    source.type = "video/mp4"; // Use the correct media type
+                    mediaElement.appendChild(source);
+                } else if (item.type === "photo") {
+                    // Create image element
+                    mediaElement = document.createElement("img");
+                    mediaElement.src = item.filePath;
+                    mediaElement.alt = item.title || "Image";
+                    mediaElement.style.width = "100%";
+                    mediaElement.style.height = "auto";
+                    mediaElement.style.maxWidth = "800px";
+                    mediaElement.style.borderRadius = "8px";
+                    mediaElement.style.marginBottom = "10px";
+                }
 
                 // Description
-                const text = document.createElement("label");
-                text.textContent = item.description || "No description available";
-                text.style.fontSize = "1rem";
-                text.style.color = "#555";
+                const description = document.createElement("label");
+                description.textContent = item.description || "No description available";
+                description.style.fontSize = "1rem";
+                description.style.color = "#555";
 
-                 // Date
-                 const date = document.createElement("label");
-                 date.textContent = item.uploadDate;
-                 date.style.fontSize = "1rem";
-                 date.style.color = "#555";
+                // Date
+                const uploadDate = document.createElement("label");
+                uploadDate.textContent = item.uploadDate;
+                uploadDate.style.fontSize = "1rem";
+                uploadDate.style.color = "#555";
 
+                // Append all elements to the div
                 div.appendChild(userContainer);
-                div.appendChild(img);
-                div.appendChild(text);
-                div.appendChild(date);
+                if (mediaElement) {
+                    div.appendChild(mediaElement);
+                }
+                div.appendChild(description);
+                div.appendChild(uploadDate);
 
+                // Append the div to the right panel
                 rightPanel.appendChild(div);
             });
         })
@@ -147,7 +168,6 @@ function fetchAllPosts() {
             rightPanel.appendChild(errorMessage);
         });
 }
-
 
 
 
