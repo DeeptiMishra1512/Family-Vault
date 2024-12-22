@@ -41,7 +41,7 @@
 
                      // Create AJAX request to send the file to the server
                      const xhr = new XMLHttpRequest();
-                     xhr.open('POST', '/upload', true); // Replace with your actual server URL
+                     xhr.open('POST', 'localhost:8080/UploadPost', true); // Replace with your actual server URL
 
                      // Update status during upload
                      xhr.upload.addEventListener('progress', function(event) {
