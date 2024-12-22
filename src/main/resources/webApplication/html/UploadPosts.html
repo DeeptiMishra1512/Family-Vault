@@ -3,16 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Upload with JavaScript</title>
     <link rel="stylesheet" href="../css/style.css">
+
+    <title>Upload File</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #upload-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #upload-button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #upload-button:hover {
+            background-color: #218838;
+        }
+        #upload-status {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
+<!-- Header -->
 <div id="header">
-    <!--    <div class="lesson-link"><img src="../logos/Vault.png" alt="Javascript"/></div>-->
-    <div class="title"><h1>WelCome To Family Vault<br></h1></div>
-    <!--    <div class="zip-link"><img src="../logos/UserImage.png" alt="Zipcode Wilmington"/></div>-->
-
-
+    <div class="lesson-link">
+        <img src="../logos/Vault1.png" alt="Javascript"/>
+    </div>
+    <div class="title">
+        <h1>Welcome To Family Vault</h1>
+    </div>
+    <div class="zip-link">
+        <img src="../logos/profileLogo.png" alt="Zipcode Wilmington"/>
+    </div>
 </div>
 <div id="main">
 <div id="left-panel">
@@ -20,27 +66,27 @@
     <button class="nav-button" onclick="location.href='index.html'">Go Back</button>
 
 </div>
-
-<!-- Right Panel -->
 <div id="right-panel">
+    <h2>Upload Post</h2>
+    <!-- Profile Description -->
+    <div class="form-group">
+        <label for="profile-description">Profile Description</label>
+        <input type="text" id="profile-description" placeholder="Enter a description">
+    </div>
 
-<!-- Form for file upload -->
-<form id="upload-form">
-    <label for="file-upload">Choose a file to upload:</label>
-    <input type="file" id="file-upload" name="file-upload" accept="image/*, .pdf, .docx, .txt">
-    <br><br>
+    <!-- File Upload -->
+    <div class="form-group">
+        <label for="file-upload">Select a File</label>
+        <input type="file" id="file-upload">
+        <p id="file-name" style="margin-top: 5px; font-size: 0.9rem; color: #666;">No file selected</p>
+    </div>
 
-
-
-    <!-- Display selected file name -->
-    <p id="file-name">No file selected</p>
-
-    <!-- Submit button -->
-    <button type="button" id="upload-button">Upload File</button>
-</form>
-
-<p id="upload-status"></p>
+    <!-- Upload Button -->
+    <button id="upload-button">Upload</button>
+    <p id="upload-status"></p>
 </div>
 </div>
+
+<script type="text/javascript" src="../js/uploadPost.js"></script>
 </body>
 </html>

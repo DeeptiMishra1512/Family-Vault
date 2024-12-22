@@ -1,15 +1,12 @@
 package com.zipcodewilmington.FamilyVault.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.sql.Date;
 
 
 @Entity
-@Table(name = "UserProfile" )
+@Table(name = "user_profile" )
 public class UserProfile {
     /***
      * +------------+----------+------------+-----------+------------+--------------+-----------------+
@@ -22,8 +19,6 @@ public class UserProfile {
      */
 
     @Id
-    @Column(name = "Profile_Id")
-    private String profileId;
     @Column(name = "User_Id")
     private String userId;
     @Column(name = "First_Name")
@@ -34,17 +29,10 @@ public class UserProfile {
     private Date birthDate;
     @Column(name = "Profile_Desc")
     private String profileDesc;
-    @Column(name = "Profile_Picture")
-    private String profilePic;
+//    @Column(name = "Profile_Picture")
+//    private String profilePic;
 
 
-    public String getProfileId() {
-        return profileId;
-    }
-
-    public void setProfileId(String profileId) {
-        this.profileId = profileId;
-    }
 
     public String getUserId() {
         return userId;
@@ -86,11 +74,11 @@ public class UserProfile {
         this.profileDesc = profileDesc;
     }
 
-    public String getProfilePic() {
-        return profilePic;
-    }
-
-    public void setProfilePic(String profilePic) {
-        this.profilePic = profilePic;
-    }
+//    public String getProfilePic() {
+//        return profilePic;
+//    }
+//
+//    public void setProfilePic(String profilePic) {
+//        this.profilePic = profilePic;
+//    }
 }

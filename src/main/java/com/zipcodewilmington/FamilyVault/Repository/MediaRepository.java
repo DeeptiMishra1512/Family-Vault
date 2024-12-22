@@ -12,7 +12,7 @@ import java.util.List;
 public interface MediaRepository extends JpaRepository<Media, Integer> {
 
     @Query(
-            value = "SELECT * FROM MEDIA WHERE User_Id = :userId",
+            value = "SELECT * FROM MEDIA WHERE User_Id = :userId order by Media_Id desc",
             nativeQuery = true)
             List<Media> findAllMedia(@Param("userId") String userId);
 

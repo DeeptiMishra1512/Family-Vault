@@ -1,76 +1,75 @@
+ function uploadData() {
+        // Get elements
+        const fileInput = document.getElementById('file-upload');
+        const fileNameDisplay = document.getElementById('file-name');
+        const uploadButton = document.getElementById('upload-button');
+        const uploadStatus = document.getElementById('upload-status');
+        const descriptionInput = document.getElementById('profile-description');
 
-     function uploadData() {
-                 // Get elements
-                 const fileInput = document.getElementById('file-upload');
-                 const fileNameDisplay = document.getElementById('file-name');
-                 const uploadButton = document.getElementById('upload-button');
-                 const uploadStatus = document.getElementById('upload-status');
+        // Display file name when file is selected
+        fileInput.addEventListener('change', function () {
+            const file = fileInput.files[0];
+            if (file) {
+                fileNameDisplay.textContent = `Selected file: ${file.name}`;
+            } else {
+                fileNameDisplay.textContent = 'No file selected';
+            }
+        });
 
-                 // Display file name when file is selected
-                 fileInput.addEventListener('change', function() {
-                     const file = fileInput.files[0];
-                     if (file) {
-                         fileNameDisplay.textContent = `Selected file: ${file.name}`;
-                     } else {
-                         fileNameDisplay.textContent = 'No file selected';
-                     }
-                 });
+        // Handle file upload
+        uploadButton.addEventListener('click', function () {
+            const file = fileInput.files[0];
+            const description = descriptionInput.value.trim();
 
-                 /*********###########################################################################********/
-                /*********######## CHECK THE ERROR MESSAGE DISPLAY AND UPLOAD STATUS DISPLAY#########********/
-                 /*********#########################################################################********/
-                 // Handle file upload via JavaScript
-                 uploadButton.addEventListener('click', function() {
-                     const file = fileInput.files[0];
+            if (!file) {
+                uploadStatus.textContent = 'Please select a file first.';
+                return;
+            }
 
-                     if (!file) {
-                         uploadStatus.textContent = 'Please select a file first.';
-                         return;
-                     }
+            if (!description) {
+                uploadStatus.textContent = 'Please enter a profile description.';
+                return;
+            }
 
-                     // Validate file type (optional)
-                     const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'text/plain'];
-                     if (!allowedTypes.includes(file.type)) {
-                         uploadStatus.textContent = 'Invalid file type. Please select an image, PDF, DOCX, or text file.';
-                         return;
-                     }
+            // Validate file type
+            const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'text/plain'];
+            if (!allowedTypes.includes(file.type)) {
+                uploadStatus.textContent = 'Invalid file type. Please select an image, PDF, DOCX, or text file.';
+                return;
+            }
 
-                     // Create FormData object for sending the file
-                     const formData = new FormData();
-                     formData.append('file-upload', file);
+            // Create FormData object
+            const formData = new FormData();
+            formData.append('description', description);
+            formData.append('image', file);
+            formData.append('userId', 'deepti15');
 
-                     // Create AJAX request to send the file to the server
-                     const xhr = new XMLHttpRequest();
-                     xhr.open('POST', 'localhost:8080/UploadPost', true); // Replace with your actual server URL
+            // AJAX request to server
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'http://localhost:8080/UploadPost', true);
 
-                     // Update status during upload
-                     xhr.upload.addEventListener('progress', function(event) {
-                         if (event.lengthComputable) {
-                             const percent = (event.loaded / event.total) * 100;
-                             uploadStatus.textContent = `Uploading: ${Math.round(percent)}%`;
-                         }
-                     });
+            xhr.upload.addEventListener('progress', function (event) {
+                if (event.lengthComputable) {
+                    const percent = (event.loaded / event.total) * 100;
+                    uploadStatus.textContent = `Uploading: ${Math.round(percent)}%`;
+                }
+            });
 
-                     // On completion (either success or failure)
-                     xhr.onload = function() {
-                         if (xhr.status === 200) {
-                             uploadStatus.textContent = 'Upload successful!';
-                         } else {
-                             uploadStatus.textContent = 'Error uploading the file.';
-                         }
-                     };
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    uploadStatus.textContent = 'Upload successful!';
+                } else {
+                    uploadStatus.textContent = 'Error uploading the file.';
+                }
+            };
 
-                     // Send the form data (file) to the server
-                     xhr.send(formData);
+            // Send form data
+            xhr.send(formData);
 
-                     // Show uploading status
-                     uploadStatus.textContent = 'Uploading...';
-                 });
-     }
+            // Show uploading status
+            uploadStatus.textContent = 'Uploading...';
+        });
+    }
 
-
-
-
-
-
-
+    // Call the uploadData function on page load
+    window.onload = uploadData;

@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "*", maxAge = 3600)
 public class MediaController {
 
     @Autowired
@@ -22,6 +21,7 @@ public class MediaController {
 
     @GetMapping("/getAllMediaByUserId")
     public List<Media> getAllMedia(@RequestParam String userId){
+
         return mediaService.findAllMedia(userId);
     }
 

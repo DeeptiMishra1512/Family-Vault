@@ -1,3 +1,5 @@
+window.onload = fetchAllPosts();
+
 
      function fetchData() {
          fetch('http://localhost:8080/getMedia?mediaId=MD001')
@@ -30,90 +32,123 @@
      }
 
 function fetchAllPosts() {
-       const userId = "deepti15";
-       fetch(`http://localhost:8080/getAllMediaByUserId?userId=${userId}`)
-           .then(response => response.json())
-           .then(data => {
-               const rightPanel = document.getElementById('right-panel');
+    const userId = "deepti15";
 
-               // Set the styles for the right panel
-               rightPanel.style.width = "100%";
-               rightPanel.style.height = "auto";
-               rightPanel.style.overflowY = "auto"; // Enable vertical scrolling if content overflows
-               rightPanel.style.display = "flex";
-               rightPanel.style.flexDirection = "column"; // Arrange items vertically
-               rightPanel.style.gap = "20px"; // Add spacing between items
+    const rightPanel = document.getElementById('right-panel');
+    rightPanel.innerHTML = ""; // Clear existing content to avoid duplication
 
-               // Loop through the list of data
-               data.forEach(item => {
-                   // Create a div element for each record
-                   const div = document.createElement("div");
-                   div.style.width = "100%";
-                   div.style.maxWidth = "1500px"; // Optional: Limit the width of each post
-                   div.style.margin = "0 auto"; // Center the post horizontally
-                   div.style.border = "1px solid #ccc"; // Add a border
-                   div.style.padding = "10px";
-                   div.style.boxSizing = "border-box";
-                   div.style.display = "flex";
-                   div.style.flexDirection = "column"; // Arrange items vertically
-                   div.style.alignItems = "flex-start"; // Left-align content
-                   div.style.backgroundColor = "#f9f9f9"; // Optional: Add a background color
+    // Add a loading message or spinner
+    const loadingMessage = document.createElement("p");
+    loadingMessage.textContent = "Loading posts...";
+    loadingMessage.style.textAlign = "center";
+    loadingMessage.style.color = "#666";
+    rightPanel.appendChild(loadingMessage);
 
-                   // Create a container for the user icon and label
-                   const userContainer = document.createElement("div");
-                   userContainer.style.display = "flex";
-                   userContainer.style.alignItems = "center";
-                   userContainer.style.marginBottom = "10px";
+    fetch(`http://localhost:8080/getAllMediaByUserId?userId=${userId}`)
+        .then(response => response.json())
+        .then(data => {
+            // Clear the loading message
+            rightPanel.innerHTML = "";
 
-                   // Create a user icon element
-                   const userIcon = document.createElement("img");
-                   userIcon.src = "../logos/UserImage.png"; // Replace with actual user icon URL
-                   userIcon.alt = "User Icon";
-                   userIcon.style.width = "40px";
-                   userIcon.style.height = "40px";
-                   userIcon.style.borderRadius = "50%"; // Make the icon circular
-                   userIcon.style.marginRight = "10px"; // Add spacing between icon and label
+            // Handle case where no posts are returned
+            if (data.length === 0) {
+                const noPostsMessage = document.createElement("p");
+                noPostsMessage.textContent = "No posts available.";
+                noPostsMessage.style.textAlign = "center";
+                noPostsMessage.style.color = "#999";
+                rightPanel.appendChild(noPostsMessage);
+                return;
+            }
 
-                   // Create a label for the user
-                   const userLabel = document.createElement("label");
-                   userLabel.textContent = item.userId || "Anonymous User"; // Use userId or fallback
-                   userLabel.style.textAlign = "left";
-                   userLabel.style.fontSize = "1rem";
+            // Add styles and populate the right panel
+            rightPanel.style.width = "100%";
+            rightPanel.style.height = "auto";
+            rightPanel.style.overflowY = "auto";
+            rightPanel.style.display = "flex";
+            rightPanel.style.flexDirection = "column";
+            rightPanel.style.gap = "20px";
 
-                   // Append user icon and label to the user container
-                   userContainer.appendChild(userIcon);
-                   userContainer.appendChild(userLabel);
+            data.forEach(item => {
+                const div = document.createElement("div");
+                div.style.width = "100%";
+                div.style.maxWidth = "900px";
+                div.style.margin = "0 auto";
+                div.style.border = "1px solid #ccc";
+                div.style.padding = "15px";
+                div.style.borderRadius = "8px";
+                div.style.boxSizing = "border-box";
+                div.style.display = "flex";
+                div.style.flexDirection = "column";
+                div.style.alignItems = "flex";
+                div.style.backgroundColor = "#f9f9f9";
+                div.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
 
-                   // Create a label for text
-                   const text = document.createElement("label");
-                   text.textContent = item.description || "No description available"; // Use 'description' property or fallback
-                   text.style.textAlign = "left";
-                   text.style.fontSize = "1rem";
-                   text.style.marginTop = "10px";
+                // User Container
+                const userContainer = document.createElement("div");
+                userContainer.style.display = "flex";
+                userContainer.style.alignItems = "center";
+                userContainer.style.marginBottom = "10px";
 
-                   // Create an image element
-                   const img = document.createElement("img");
-                   img.src = item.filePath;
-                   img.alt = item.title || "Image";
-                   img.style.width = "100%"; // Make the image fill the div's width
-                   img.style.height = "auto"; // Maintain aspect ratio
-                   img.style.maxWidth = "700px"; // Optional: Limit max image size
-                   img.style.borderRadius = "8px"; // Optional: Add rounded corners for the image
+                const userIcon = document.createElement("img");
+                userIcon.src = "../logos/UserImage.png";
+                userIcon.alt = "User Icon";
+                userIcon.style.width = "40px";
+                userIcon.style.height = "40px";
+                userIcon.style.borderRadius = "50%";
+                userIcon.style.marginRight = "10px";
 
-                   // Append user container, image, and text to the div
-                   div.appendChild(userContainer);
-                   div.appendChild(img);
-                   div.appendChild(text);
+                const userLabel = document.createElement("label");
+                userLabel.textContent = item.userId || "Anonymous User";
+                userLabel.style.fontSize = "1rem";
+                userLabel.style.color = "#333";
 
-                   // Append the div to the right panel
-                   rightPanel.appendChild(div);
-               });
-           })
-           .catch(error => {
-               console.error('Error fetching data:', error);
-           });
+                userContainer.appendChild(userIcon);
+                userContainer.appendChild(userLabel);
 
-     }
+                // Post Image
+                const img = document.createElement("img");
+                img.src = item.filePath;
+                img.alt = item.title || "Image";
+                img.style.width = "100%";
+                img.style.height = "auto";
+                img.style.maxWidth = "800px";
+                img.style.borderRadius = "8px";
+                img.style.marginBottom = "10px";
+
+                // Description
+                const text = document.createElement("label");
+                text.textContent = item.description || "No description available";
+                text.style.fontSize = "1rem";
+                text.style.color = "#555";
+
+                 // Date
+                 const date = document.createElement("label");
+                 date.textContent = item.uploadDate;
+                 date.style.fontSize = "1rem";
+                 date.style.color = "#555";
+
+                div.appendChild(userContainer);
+                div.appendChild(img);
+                div.appendChild(text);
+                div.appendChild(date);
+
+                rightPanel.appendChild(div);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+
+            // Show error message
+            rightPanel.innerHTML = "";
+            const errorMessage = document.createElement("p");
+            errorMessage.textContent = "Failed to load posts. Please try again later.";
+            errorMessage.style.textAlign = "center";
+            errorMessage.style.color = "red";
+            rightPanel.appendChild(errorMessage);
+        });
+}
+
+
 
 
 

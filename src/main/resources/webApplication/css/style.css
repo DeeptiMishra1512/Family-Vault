@@ -8,12 +8,58 @@
         }
 
         /* Header styles */
-        #header {
+        /*#header {
             background-color: #a569bd;
             color: white;
             text-align: center;
             padding: 15px;
             font-size: 1.5rem;
+        }*/
+
+        /* Header Styling */
+        #header {
+            display: flex; /* Use Flexbox to arrange items horizontally */
+            align-items: center; /* Vertically center items */
+            justify-content: space-between; /* Space between elements */
+            background-color:#154360; /* Header background color */
+            padding: 10px 20px; /* Add padding around the header */
+            height: 100px; /* Set a fixed height for the header */
+        }
+
+        /* Logo and Link Styling */
+        .lesson-link img {
+            width: 130px; /* Set a fixed width for the images */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 95px;
+
+        }
+
+        .zip-link img {
+                    width: 110px; /* Set a fixed width for the images */
+                    height: auto; /* Maintain aspect ratio */
+                    border-radius: 55px; /* Adjust the radius for more or less rounded corners */
+                }
+
+        /* Title Styling */
+        .title h1 {
+            font-size: 1.5rem; /* Adjust font size */
+            color: white; /* Text color */
+            text-align: center;
+            margin: 0; /* Remove default margin */
+        }
+
+        /* Adjustments for Small Screens */
+        @media (max-width: 768px) {
+            #header {
+                flex-direction: column; /* Stack items vertically */
+                height: auto; /* Allow header height to adjust */
+            }
+            .title h1 {
+                font-size: 1.2rem; /* Smaller font size for smaller screens */
+            }
+            .lesson-link img, .zip-link img {
+                width: 40px; /* Smaller icons for smaller screens */
+            }
         }
 
         /* Main container for left and right panels */
@@ -32,7 +78,7 @@
         }
         /* Left panel button*/
         .nav-button {
-            background-color: #a569bd; /* Button background color */
+            background-color: #154360; /* Button background color */
             color: white; /* Text color */
             padding: 15px; /* Internal spacing */
             border: none;
