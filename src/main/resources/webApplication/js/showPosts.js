@@ -1,36 +1,5 @@
 window.onload = fetchAllPosts();
 
-
-//     function fetchData() {
-//         fetch('http://localhost:8080/getMedia?mediaId=MD001')
-//             .then(response => response.json())
-//             .then(data => {
-//                 // Create a div element
-//                 var div = document.createElement("div");
-//                 // Create an image element
-//                 var img = document.createElement("img");
-//                 // Set width and height
-//                 div.style.width = "200px"; // Set width to 200 pixels
-//                 div.style.height = "150px"; // Set height to 150 pixels
-//
-//                 var text = document.createElement("label");
-//                 document.getElementById('right-panel').style.width = "150px"; // Set width to 200 pixels
-//                 document.getElementById('right-panel').style.height = "600px"; // Set height to 150 pixels
-//
-//                 text.textContent = " "
-//                 // Add image src property
-//                 img.src = data.filePath;
-//                 // Append div as a child to #result
-//                 document.getElementById('right-panel').appendChild(div);
-//                 // Append image as a child to the div
-//                 div.appendChild(text);
-//                 div.appendChild(img);
-//             })
-//             .catch(error => {
-//                 console.error('Error fetching data:', error);
-//             });
-//     }
-
 function fetchAllPosts() {
     const userId = "deepti15";
 
@@ -104,7 +73,7 @@ function fetchAllPosts() {
                 userContainer.appendChild(userIcon);
                 userContainer.appendChild(userLabel);
 
-                // Dynamically create media element (video or image)
+                //############ Dynamically create media element (video or image) #################//
                 let mediaElement;
                 if (item.type === "Video") {
                     // Create video element
@@ -112,7 +81,7 @@ function fetchAllPosts() {
                     mediaElement.controls = true;
                     mediaElement.style.width = "100%";
                     mediaElement.style.height = "auto";
-                    mediaElement.style.maxWidth = "800px";
+                    mediaElement.style.maxWidth = "600px";
                     mediaElement.style.borderRadius = "8px";
                     mediaElement.style.marginBottom = "10px";
 
@@ -132,25 +101,150 @@ function fetchAllPosts() {
                     mediaElement.style.marginBottom = "10px";
                 }
 
-                // Description
+                //################## Description #######################//
                 const description = document.createElement("label");
                 description.textContent = item.description || "No description available";
                 description.style.fontSize = "1rem";
                 description.style.color = "#555";
 
-                // Date
+                //#################### Date ##########################//
                 const uploadDate = document.createElement("label");
                 uploadDate.textContent = item.uploadDate;
                 uploadDate.style.fontSize = "1rem";
                 uploadDate.style.color = "#555";
 
-                // Append all elements to the div
+
+               // Fetch existing comments against media
+               fetch(`http://localhost:8080/getAllPostTrackerByMediaId?mediaId=${item.mediaId}`)
+                   .then(response => response.json())
+                   .then(commentsData => {
+                       // Check if there are any comments
+                       if (commentsData.length > 0) {
+                           // Container for existing comments
+                           const commentsContainer = document.createElement("div");
+                           commentsContainer.style.marginTop = "10px";
+
+                           commentsData.forEach(commentItem => {
+                               // Container for each comment with profile picture and comment text
+                               const commentDisplayContainer = document.createElement("div");
+                               commentDisplayContainer.style.display = "flex";
+                               commentDisplayContainer.style.alignItems = "center";
+                               commentDisplayContainer.style.gap = "10px";
+                               commentDisplayContainer.style.marginBottom = "10px";
+
+                               // Comment profile picture
+                               const commentProfilePicture = document.createElement("img");
+                               commentProfilePicture.src = "../logos/profileLogo.png"; // Update path as needed
+                               commentProfilePicture.alt = "User Profile";
+                               commentProfilePicture.style.width = "40px";
+                               commentProfilePicture.style.height = "40px";
+                               commentProfilePicture.style.borderRadius = "50%";
+
+                               // Comment text
+                               const commentDisplay = document.createElement("label");
+                               commentDisplay.textContent = commentItem.comment || "No comment text available";
+                               commentDisplay.style.fontSize = "1rem";
+                               commentDisplay.style.color = "#555";
+
+                               // Append profile picture and comment text to the container
+                               commentDisplayContainer.appendChild(commentProfilePicture);
+                               commentDisplayContainer.appendChild(commentDisplay);
+
+                               // Append the comment display container to the comments container
+                               commentsContainer.appendChild(commentDisplayContainer);
+                           });
+
+                           // Append the comments container to the main div
+                           div.appendChild(commentsContainer);
+                       }
+                   })
+                   .catch(error => {
+                       console.error('Error fetching comments:', error);
+                   });
+
+                //################## Comment Section ####################//
+                //Comment Display field //
+                 const commentDisplay = document.createElement("label");
+
+                 const commentContainer = document.createElement("div");
+                 commentContainer.style.marginTop = "10px";
+
+                 const commentInput = document.createElement("textarea");
+                 commentInput.placeholder = "Write a comment...";
+                 commentInput.style.width = "90%";
+                 commentInput.style.height = "60px";
+                 commentInput.style.marginBottom = "10px";
+                 commentInput.style.padding = "10px";
+                 commentInput.style.borderRadius = "4px";
+                 commentInput.style.border = "1px solid #ccc";
+
+                 const commentSubmitButton = document.createElement("button");
+                 commentSubmitButton.textContent = "Submit Comment";
+                 commentSubmitButton.style.padding = "10px 15px";
+                 commentSubmitButton.style.border = "none";
+                 commentSubmitButton.style.backgroundColor = "#28a745";
+                 commentSubmitButton.style.color = "#fff";
+                 commentSubmitButton.style.cursor = "pointer";
+                 commentSubmitButton.style.borderRadius = "4px";
+
+                 commentSubmitButton.addEventListener("click", function () {
+                 const comment = commentInput.value;
+                      if (comment) {
+                           // Clear the text box immediately
+                           commentInput.value = "";
+                           const data = {
+                             mediaId: item.mediaId,
+                             userId: userId,
+                             likesCount: 0,
+                             comment: comment,
+                             activityTime: Date.now()
+                           };
+
+                           fetch('http://localhost:8080/savePostTracker', {
+                             method: 'POST',
+                             headers: {
+                               'Content-Type': 'application/json'
+                             },
+                             body: JSON.stringify(data)
+                           })
+                           .then(response => response.json())
+                           .then(data => {
+                             //################## Comments display #######################//
+                                //refresh the screen to show the latest comments
+                               fetchAllPosts()
+
+                             console.log('Success:', data);
+                           })
+                           .catch(error => {
+                             console.error('Error:', error);
+                           });
+
+                          }
+                      });
+
+                 commentContainer.appendChild(commentInput);
+                 commentContainer.appendChild(commentSubmitButton);
+
+                //################## Append all elements to the div ################//
                 div.appendChild(userContainer);
                 if (mediaElement) {
                     div.appendChild(mediaElement);
                 }
                 div.appendChild(description);
                 div.appendChild(uploadDate);
+                // Container for profile picture and comment display
+                const commentDisplayContainer = document.createElement("div");
+                commentDisplayContainer.style.display = "flex";
+                commentDisplayContainer.style.alignItems = "center";
+                commentDisplayContainer.style.gap = "10px";
+                commentDisplayContainer.style.marginTop = "10px";
+                commentDisplayContainer.appendChild(commentDisplay);
+
+                // Append the container to the main div
+                div.appendChild(commentDisplayContainer);
+
+                div.appendChild(commentContainer);
+
 
                 // Append the div to the right panel
                 rightPanel.appendChild(div);

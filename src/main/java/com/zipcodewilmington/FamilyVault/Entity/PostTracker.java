@@ -1,14 +1,11 @@
 package com.zipcodewilmington.FamilyVault.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "PostTracker")
+@Table(name = "posttracker")
 public class PostTracker {
 
 /**
@@ -25,33 +22,33 @@ public class PostTracker {
  */
 
 @Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
 @Column(name = "Post_Id")
- private String postId;
-
+ private int postId;
 @Column(name = "Media_Id")
- private String mediaId;
+ private int mediaId;
 @Column(name = "User_Id")
  private String userId;
  @Column(name = "Likes")
  private int likesCount;
  @Column(name = "Comment")
  private String comment;
- @Column(name = "ActivityTime")
+ @Column(name = "activity_time")
  private Timestamp activityTime;
 
-    public String getPostId() {
+    public Integer getPostId() {
         return postId;
     }
 
-    public void setPostId(String postId) {
+    public void setPostId(Integer postId) {
         this.postId = postId;
     }
 
-    public String getMediaId() {
+    public Integer getMediaId() {
         return mediaId;
     }
 
-    public void setMediaId(String mediaId) {
+    public void setMediaId(Integer mediaId) {
         this.mediaId = mediaId;
     }
 

@@ -6,6 +6,7 @@ import com.zipcodewilmington.FamilyVault.Service.PostTrackerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,14 +16,20 @@ public class PostTrackerImpl implements PostTrackerService {
     PostTrackerRepository postTrackerRepository;
 
 @Override
-public PostTracker getPost(String postId){
+public PostTracker getPostTracker(Integer postId){
     Optional<PostTracker> post =  postTrackerRepository.findById(postId);
     return post.orElse(null);
 
 }
 
-@Override
-public PostTracker savePost(PostTracker postTracker){
+    @Override
+    public List<PostTracker> getAllPostTrackerByMediaId(Integer mediaId) {
+
+    return postTrackerRepository.findAllPostTrackerByMediaId(mediaId);
+    }
+
+    @Override
+public PostTracker savePostTracker(PostTracker postTracker){
     return postTrackerRepository.save(postTracker);
 
 }
