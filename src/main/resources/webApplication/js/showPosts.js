@@ -58,7 +58,7 @@ function fetchAllPosts() {
                 userContainer.style.marginBottom = "10px";
 
                 const userIcon = document.createElement("img");
-                userIcon.src = "../logos/UserImage.png";
+                userIcon.src = "../logos/profileLogo.png";
                 userIcon.alt = "User Icon";
                 userIcon.style.width = "40px";
                 userIcon.style.height = "40px";
