@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Header, Left, and Right Panels</title>
+    <title>Family Vault</title>
     <link rel="stylesheet" href="../css/style.css">
 
 </head>
@@ -11,13 +11,15 @@
 <!-- Header -->
 <div id="header">
     <div class="lesson-link">
-        <img src="../logos/Vault.png" alt="Javascript"/>
+        <img src="../logos/Vault.png" alt="Family Vault Logo"/>
     </div>
     <div class="title">
         <h1>Welcome To Family Vault</h1>
+<!--        <button class="nav-button" onclick="">Home</button>-->
     </div>
     <div class="zip-link">
-        <img src="../logos/profileLogo.png" alt="Zipcode Wilmington"/>
+        <img src="../logos/profileLogo.png" alt="User Profile Picture"/>
+        <p id="user-name">Deepti Mishra</p>
     </div>
 </div>
 <!-- Main container -->
@@ -29,11 +31,13 @@
                 <button class="nav-button" onclick="location.href='UploadPosts.html'">Add New Post</button>
                 <button class="nav-button" onclick="">Show My Connections</button>
                 <button class="nav-button" onclick="">Show My Groups</button>
+                <button class="nav-button" onclick="">Log Out</button>
     </div>
 
     <!-- Right Panel -->
     <div id="right-panel"></div>
 </div>
 <script type="text/javascript" src="../js/showPosts.js"></script>
+<script type="text/javascript" src="../js/ShowProfileName.js"></script>
 </body>
 </html>
