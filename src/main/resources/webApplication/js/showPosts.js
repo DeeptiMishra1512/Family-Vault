@@ -98,9 +98,11 @@ function createPostElement(item, userId) {
     // Comment Section
     const commentContainer = createCommentSection(item.mediaId, userId);
     div.appendChild(commentContainer);
+ //   div.appendChild(likeContainer);
 
     return div;
 }
+
 
 function createUserContainer(userId) {
     const userContainer = document.createElement("div");

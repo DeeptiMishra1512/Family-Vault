@@ -28,7 +28,7 @@
                 .catch(error => {
                     console.error("Error fetching user profile:", error);
                 });
-        }
+
 
         // Call the function with the user's ID
         const userId = "deepti15"; // Replace with dynamic userId as needed
