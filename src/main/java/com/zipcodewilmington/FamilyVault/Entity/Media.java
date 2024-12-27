@@ -1,6 +1,5 @@
 package com.zipcodewilmington.FamilyVault.Entity;
 import jakarta.persistence.*;
-
 import java.sql.Date;
 
 

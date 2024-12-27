@@ -1,6 +1,12 @@
 package com.zipcodewilmington.FamilyVault.Entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "Contact")
 public class Contact {
 
 /***
@@ -14,11 +20,16 @@ public class Contact {
  * | ContactInfo  | varchar(500) | YES  |     | NULL    |       |
  * +--------------+--------------+------+-----+---------+-------+
  */
-
+@Id
+@Column(name = "Contact_Id")
 private String contactId;
+@Column(name  = "User_Id")
 private String userId;
+@Column(name = "Name")
 private String name;
+@Column(name = "Relationship")
 private String relationship;
+@Column(name = "ContactInfo")
 private String contactInfo;
 
 
