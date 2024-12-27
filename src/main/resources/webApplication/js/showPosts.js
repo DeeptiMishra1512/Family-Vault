@@ -76,29 +76,37 @@ function createPostElement(item, userId) {
     const userContainer = createUserContainer(item.userId);
     div.appendChild(userContainer);
 
+    // Upload Date
+         const uploadDate = document.createElement("label");
+         uploadDate.textContent = item.uploadDate;
+         uploadDate.style.cssText = "font-size: 1rem; color: #555;";
+         div.appendChild(uploadDate);
+
+// Description
+     const description = document.createElement("label");
+     description.textContent = item.description || "No description available";
+     description.style.cssText = "font-size: 1rem; color: #555;";
+     div.appendChild(description);
+
     // Media Element
     const mediaElement = createMediaElement(item);
     if (mediaElement) div.appendChild(mediaElement);
 
-    // Description
-    const description = document.createElement("label");
-    description.textContent = item.description || "No description available";
-    description.style.cssText = "font-size: 1rem; color: #555;";
-    div.appendChild(description);
 
-    // Upload Date
-    const uploadDate = document.createElement("label");
-    uploadDate.textContent = item.uploadDate;
-    uploadDate.style.cssText = "font-size: 1rem; color: #555;";
-    div.appendChild(uploadDate);
+
+    // Fetch and display likes
+    const LikeContainer = createLikeButton(item, userId);
+    div.appendChild(LikeContainer);
 
     // Fetch and display comments
     fetchComments(item.mediaId, div);
 
+
+
     // Comment Section
     const commentContainer = createCommentSection(item.mediaId, userId);
     div.appendChild(commentContainer);
- //   div.appendChild(likeContainer);
+
 
     return div;
 }
@@ -264,4 +272,62 @@ function createCommentSection(mediaId, userId) {
     commentContainer.appendChild(commentSubmitButton);
 
     return commentContainer;
+}
+
+
+
+//Like button functionality
+function createLikeButton(item, userId) {
+    const likeContainer = document.createElement("div");
+    likeContainer.style.cssText = `
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+    `;
+
+    const likeButton = document.createElement("button");
+    likeButton.textContent = "Like";
+    likeButton.style.cssText = `
+        padding: 10px 15px;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 4px;
+    `;
+
+    const likeCount = document.createElement("span");
+    likeCount.textContent = `Likes: ${item.likesCount || 0}`;
+    likeCount.style.cssText = `
+        font-size: 1rem;
+        color: #555;
+    `;
+
+    likeButton.addEventListener("click", () => {
+        const data = {
+            mediaId: item.mediaId,
+            userId,
+            likesCount: (item.likesCount || 0) + 1, // Increment like count
+            comment: null, // No comment for like action
+            activityTime: Date.now(),
+        };
+
+        fetch('http://localhost:8080/savePostTracker', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+        })
+            .then(response => response.json())
+            .then(() => {
+                // Update the like count on the UI
+                likeCount.textContent = `Likes: ${data.likesCount}`;
+            })
+            .catch(error => console.error('Error:', error));
+    });
+
+    likeContainer.appendChild(likeButton);
+    likeContainer.appendChild(likeCount);
+
+    return likeContainer;
 }
