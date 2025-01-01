@@ -206,7 +206,9 @@ function fetchComments(mediaId, parentDiv) {
 
                     commentDisplayContainer.appendChild(commentProfilePicture);
                     commentDisplayContainer.appendChild(commentDisplay);
+                    if(commentItem.comment !== null){
                     commentsContainer.appendChild(commentDisplayContainer);
+                    }
                 });
 
                 parentDiv.appendChild(commentsContainer);
