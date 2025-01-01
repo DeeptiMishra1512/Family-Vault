@@ -1,11 +1,10 @@
 package com.zipcodewilmington.FamilyVault.Controller;
 
 import com.zipcodewilmington.FamilyVault.Entity.Media;
-import com.zipcodewilmington.FamilyVault.Entity.PostTracker;
+import com.zipcodewilmington.FamilyVault.Entity.PostTrackerComment;
 import com.zipcodewilmington.FamilyVault.Repository.MediaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,7 +32,7 @@ public class SavePostController {
             @RequestParam(value = "video", required = false) MultipartFile video) {
 
         Media media = new Media();
-        PostTracker post = new PostTracker();
+        PostTrackerComment post = new PostTrackerComment();
 
         media.setDescription(description);
         // Get the current date

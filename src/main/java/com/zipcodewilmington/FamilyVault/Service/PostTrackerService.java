@@ -1,6 +1,6 @@
 package com.zipcodewilmington.FamilyVault.Service;
 
-import com.zipcodewilmington.FamilyVault.Entity.PostTracker;
+import com.zipcodewilmington.FamilyVault.Entity.PostTrackerComment;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,9 +8,9 @@ import java.util.List;
 @Service
 public interface PostTrackerService {
 
-    PostTracker getPostTracker(Integer postId);
+    PostTrackerComment getPostTracker(Integer postId);
 
     /**Changed parameter as Media_Id to get Likes and Comments for each Media and not post  */
-    List<PostTracker> getAllPostTrackerByMediaId(Integer mediaId);
-    PostTracker savePostTracker(PostTracker postTracker);
+    List<PostTrackerComment> getAllPostTrackerByMediaId(Integer mediaId);
+    PostTrackerComment savePostTracker(PostTrackerComment postTrackerComment);
 }

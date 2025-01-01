@@ -1,6 +1,6 @@
 package com.zipcodewilmington.FamilyVault.Service.impl;
 
-import com.zipcodewilmington.FamilyVault.Entity.PostTracker;
+import com.zipcodewilmington.FamilyVault.Entity.PostTrackerComment;
 import com.zipcodewilmington.FamilyVault.Repository.PostTrackerRepository;
 import com.zipcodewilmington.FamilyVault.Service.PostTrackerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,21 +16,21 @@ public class PostTrackerImpl implements PostTrackerService {
     PostTrackerRepository postTrackerRepository;
 
 @Override
-public PostTracker getPostTracker(Integer postId){
-    Optional<PostTracker> post =  postTrackerRepository.findById(postId);
+public PostTrackerComment getPostTracker(Integer postId){
+    Optional<PostTrackerComment> post =  postTrackerRepository.findById(postId);
     return post.orElse(null);
 
 }
 
     @Override
-    public List<PostTracker> getAllPostTrackerByMediaId(Integer mediaId) {
+    public List<PostTrackerComment> getAllPostTrackerByMediaId(Integer mediaId) {
 
     return postTrackerRepository.findAllPostTrackerByMediaId(mediaId);
     }
 
     @Override
-public PostTracker savePostTracker(PostTracker postTracker){
-    return postTrackerRepository.save(postTracker);
+public PostTrackerComment savePostTracker(PostTrackerComment postTrackerComment){
+    return postTrackerRepository.save(postTrackerComment);
 
 }
 

@@ -7,7 +7,9 @@ create table Media(Media_Id int Not Null AUTO_INCREMENT,User_Id varchar(255),Typ
 create table Contact(Contact_Id varchar(200) Not Null,User_Id varchar(255),Name varchar(500),Relationship varchar(500),ContactInfo varchar(500),Primary Key(Contact_Id));
 create table UserGroupAssociation(UserGroupAssociation_Id varchar(255) Not Null,User_Id varchar(255),Group_Id varchar(255), Primary Key(UserGroupAssociation_Id));
 create table UserProfile(User_Id varchar(255) Not Null,First_Name varchar(500),Last_Name varchar(500),Birthdate Date,Profile_Desc varchar(5000), Primary Key(User_Id));
-Create table PostTracker(Post_Id int Not Null AUTO_INCREMENT,Media_Id int Not Null,User_Id varchar(255),Likes int,Comment varchar(2000),activity_time TimeStamp,Primary Key(Post_Id));
+Create table PostTracker_comment(Post_Id int Not Null AUTO_INCREMENT,Media_Id int Not Null,User_Id varchar(255),Comment varchar(2000),activity_time TimeStamp,Primary Key(Post_Id));
+create table posttracker_likes (Post_Id int Not Null AUTO_INCREMENT,Media_Id int Not Null,User_Id varchar(255),Likes int,activity_time TimeStamp,Primary Key(Pos
+t_Id));
 
 
 insert into VaultUser(User_Id,Username,password,Email_Id) values('deepti15','DeeptiMishra','Familyvaultrocks!','deepti86mishra@gmail.com'),

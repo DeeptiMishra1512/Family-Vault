@@ -5,8 +5,8 @@ import jakarta.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "posttracker")
-public class PostTracker {
+@Table(name = "posttracker_comment")
+public class PostTrackerComment {
 
 /**
  Field        | Type          | Null | Key | Default | Extra |
@@ -29,8 +29,6 @@ public class PostTracker {
  private int mediaId;
 @Column(name = "User_Id")
  private String userId;
- @Column(name = "Likes")
- private int likesCount;
  @Column(name = "Comment")
  private String comment;
  @Column(name = "activity_time")
@@ -58,14 +56,6 @@ public class PostTracker {
 
     public void setUserId(String userId) {
         this.userId = userId;
-    }
-
-    public int getLikesCount() {
-        return likesCount;
-    }
-
-    public void setLikesCount(int likesCount) {
-        this.likesCount = likesCount;
     }
 
     public String getComment() {
