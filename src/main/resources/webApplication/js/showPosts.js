@@ -148,10 +148,12 @@ function createMediaElement(item) {
         mediaElement.controls = true;
         mediaElement.style.cssText = `
             width: 100%;
-            height: auto;
-            max-width: 600px;
+           // height: auto;
+            max-width: 800px;
             border-radius: 8px;
             margin-bottom: 10px;
+            height: 400px; /* Fixed height */
+
         `;
 
         const source = document.createElement("source");
@@ -164,10 +166,11 @@ function createMediaElement(item) {
         mediaElement.alt = item.title || "Image";
         mediaElement.style.cssText = `
             width: 100%;
-            height: auto;
-            max-width: 800px;
+         //   height: auto;
+            max-width: 600px;
             border-radius: 8px;
             margin-bottom: 10px;
+            height: 400px; /* Fixed height */
         `;
     }
 

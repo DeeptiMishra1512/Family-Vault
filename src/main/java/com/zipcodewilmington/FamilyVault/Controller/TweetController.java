@@ -16,6 +16,12 @@ public class TweetController {
         List<String> dummyTweets = new ArrayList<>();
         dummyTweets.add("Hello , this is my first tweet");
         dummyTweets.add("Hello , there!!");
+        dummyTweets.add("I hope this new year #2025 brings joy and prosperity!!");
+        dummyTweets.add("#DieHard is super good movie...#DoneDone !!");
+        dummyTweets.add("#NewYear2025 #Rocks!!!!");
+        dummyTweets.add("#NewYear2025 #SuperRocks!!!!");
+        dummyTweets.add("#Goodbye2024 !!!!");
+        dummyTweets.add("#Goodbye2024 !!!!");
 
         Tweet tweet = new Tweet();
 

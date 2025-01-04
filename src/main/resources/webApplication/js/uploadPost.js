@@ -41,7 +41,7 @@
             // Create FormData object
             const formData = new FormData();
             formData.append('description', description);
-            if (file.type === 'video/mp4' || 'video/quicktime'){
+            if(file.type === 'video/mp4' || file.type === 'video/quicktime'){
                formData.append('video', file);
             }else{
                formData.append('image', file);

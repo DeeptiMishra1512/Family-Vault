@@ -23,20 +23,20 @@
             justify-content: space-between; /* Space between elements */
             background-color:#154360; /* Header background color */
             padding: 10px 20px; /* Add padding around the header */
-            height: 100px; /* Set a fixed height for the header */
+            height: 60px; /* Set a fixed height for the header */
         }
 
         /* Logo and Link Styling */
         .lesson-link img {
-            width: 130px; /* Set a fixed width for the images */
-            height: auto; /* Maintain aspect ratio */
-            border-radius: 95px;
+            width: 50px; /* Set a fixed width for the images */
+            height: 60px; /* Maintain aspect ratio */
+            border-radius: 150px;
 
         }
 
         .zip-link img {
-                    width: 100px; /* Set a fixed width for the images */
-                    height: auto; /* Maintain aspect ratio */
+                    width: 50px; /* Set a fixed width for the images */
+                    height: 50px; /* Maintain aspect ratio */
                     border-radius: 55px; /* Adjust the radius for more or less rounded corners */
                 }
 
