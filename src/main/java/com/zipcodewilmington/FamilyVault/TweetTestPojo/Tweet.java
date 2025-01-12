@@ -5,8 +5,7 @@ import java.util.List;
 public class Tweet {
 
     String userId;
-    String movieId;
-    List<String> tweets;
+    String tweet;
 
     public String getUserId() {
         return userId;
@@ -16,28 +15,19 @@ public class Tweet {
         this.userId = userId;
     }
 
-    public String getMovieId() {
-        return movieId;
+    public String getTweet() {
+        return tweet;
     }
 
-    public void setMovieId(String movieId) {
-        this.movieId = movieId;
-    }
-
-    public List<String> getTweets() {
-        return tweets;
-    }
-
-    public void setTweets(List<String> tweets) {
-        this.tweets = tweets;
+    public void setTweet(String tweets) {
+        this.tweet = tweets;
     }
 
     @Override
     public String toString() {
         return "Tweet{" +
                 "userId='" + userId + '\'' +
-                ", movieId='" + movieId + '\'' +
-                ", tweets=" + tweets +
+                ", tweets='" + tweet + '\'' +
                 '}';
     }
 }

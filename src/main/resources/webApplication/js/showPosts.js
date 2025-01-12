@@ -76,12 +76,6 @@ function createPostElement(item, userId) {
     const userContainer = createUserContainer(item.userId);
     div.appendChild(userContainer);
 
-    // Upload Date
-         const uploadDate = document.createElement("label");
-         uploadDate.textContent = item.uploadDate;
-         uploadDate.style.cssText = "font-size: 1rem; color: #555;";
-         div.appendChild(uploadDate);
-
 // Description
      const description = document.createElement("label");
      description.textContent = item.description || "No description available";
@@ -92,7 +86,11 @@ function createPostElement(item, userId) {
     const mediaElement = createMediaElement(item);
     if (mediaElement) div.appendChild(mediaElement);
 
-
+ // Upload Date
+         const uploadDate = document.createElement("label");
+         uploadDate.textContent = item.uploadDate;
+         uploadDate.style.cssText = "font-size: 1rem; color: #555;";
+         div.appendChild(uploadDate);
 
     // Fetch and display likes
     const LikeContainer = createLikeButton(item, userId);
@@ -100,7 +98,6 @@ function createPostElement(item, userId) {
 
     // Fetch and display comments
     fetchComments(item.mediaId, div);
-
 
 
     // Comment Section
@@ -140,6 +137,15 @@ function createUserContainer(userId) {
     return userContainer;
 }
 
+// Function to format the date to MON-DD
+function formatDate(dateString) {
+    const date = new Date(dateString);
+
+    // Get the month in short format (e.g., Jan, Feb, Mar)
+    const options = { month: 'short', day: '2-digit' };
+    return date.toLocaleDateString('en-US', options);
+}
+
 function createMediaElement(item) {
     let mediaElement;
 
@@ -167,7 +173,7 @@ function createMediaElement(item) {
         mediaElement.style.cssText = `
             width: 100%;
          //   height: auto;
-            max-width: 600px;
+            max-width: 700px;
             border-radius: 8px;
             margin-bottom: 10px;
             height: 400px; /* Fixed height */
@@ -177,6 +183,7 @@ function createMediaElement(item) {
     return mediaElement;
 }
 
+     /* ######## Fetch COMMENTS for Each Post ######### */
 function fetchComments(mediaId, parentDiv) {
     fetch(`http://localhost:8080/getAllPostTrackerByMediaId?mediaId=${mediaId}`)
         .then(response => response.json())
@@ -279,9 +286,7 @@ function createCommentSection(mediaId, userId) {
     return commentContainer;
 }
 
-
-
-//Like button functionality
+//Creating Likes Button and methods to fetch total likes and saving like each time user hits like Button.
 function createLikeButton(item, userId) {
     const likeContainer = document.createElement("div");
     likeContainer.style.cssText = `
@@ -303,32 +308,54 @@ function createLikeButton(item, userId) {
     `;
 
     const likeCount = document.createElement("span");
-    likeCount.textContent = `Likes: ${item.likesCount || 0}`;
+    likeCount.textContent = "Likes: 0"; // Default initial text
     likeCount.style.cssText = `
         font-size: 1rem;
         color: #555;
     `;
 
+    // Fetch likes count from the API -----
+        function fetchLikesCount(mediaId) {
+            fetch(`http://localhost:8080/getAllPostLikesByMediaId?mediaId=${mediaId}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch likes count');
+                    }
+                    return response.json();
+                })
+                .then(count => {
+                    console.log('Fetched likes count:', count); // Debugging log
+                    // Update the UI with the fetched likes count
+                    likeCount.textContent = `Likes: ${count}`;
+                })
+                .catch(error => {
+                    console.error('Error fetching likes count:', error);
+                });
+        }
+
+        // Fetch the initial likes count when rendering the button
+        fetchLikesCount(item.mediaId);
+
     likeButton.addEventListener("click", () => {
         const data = {
             mediaId: item.mediaId,
             userId,
-            likesCount: (item.likesCount || 0) + 1, // Increment like count
-            comment: null, // No comment for like action
+            likes: 1, // Increment like count
             activityTime: Date.now(),
         };
 
-        fetch('http://localhost:8080/savePostTracker', {
+//Save the likes count each time user hits the like button.
+        fetch('http://localhost:8080/savePostLikes', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
         })
             .then(response => response.json())
             .then(() => {
-                // Update the like count on the UI
-                likeCount.textContent = `Likes: ${data.likesCount}`;
+                // Refresh the like count after a successful like
+                fetchLikesCount(item.mediaId);
             })
-            .catch(error => console.error('Error:', error));
+            .catch(error => console.error('Error saving like:', error));
     });
 
     likeContainer.appendChild(likeButton);
