@@ -12,7 +12,7 @@ function fetchAllPosts() {
     loadingMessage.style.color = "#666";
     rightPanel.appendChild(loadingMessage);
 
-    fetch(`http://localhost:8080/getAllMediaByUserId?userId=${userId}`)
+    fetch(`http://localhost:8081/getAllMediaByUserId?userId=${userId}`)
         .then(response => response.json())
         .then(data => {
             // Clear the loading message
@@ -185,7 +185,7 @@ function createMediaElement(item) {
 
      /* ######## Fetch COMMENTS for Each Post ######### */
 function fetchComments(mediaId, parentDiv) {
-    fetch(`http://localhost:8080/getAllPostTrackerByMediaId?mediaId=${mediaId}`)
+    fetch(`http://localhost:8081/getAllPostTrackerByMediaId?mediaId=${mediaId}`)
         .then(response => response.json())
         .then(commentsData => {
             if (commentsData.length > 0) {
@@ -267,7 +267,7 @@ function createCommentSection(mediaId, userId) {
                 activityTime: Date.now(),
             };
 
-            fetch('http://localhost:8080/savePostTracker', {
+            fetch('http://localhost:8081/savePostTracker', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
@@ -316,7 +316,7 @@ function createLikeButton(item, userId) {
 
     // Fetch likes count from the API -----
         function fetchLikesCount(mediaId) {
-            fetch(`http://localhost:8080/getAllPostLikesByMediaId?mediaId=${mediaId}`)
+            fetch(`http://localhost:8081/getAllPostLikesByMediaId?mediaId=${mediaId}`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Failed to fetch likes count');
@@ -345,7 +345,7 @@ function createLikeButton(item, userId) {
         };
 
 //Save the likes count each time user hits the like button.
-        fetch('http://localhost:8080/savePostLikes', {
+        fetch('http://localhost:8081/savePostLikes', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),

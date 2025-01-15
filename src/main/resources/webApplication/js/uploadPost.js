@@ -52,7 +52,7 @@
 
             // AJAX request to server
             const xhr = new XMLHttpRequest();
-            xhr.open('POST', 'http://localhost:8080/UploadPost', true);
+            xhr.open('POST', 'http://localhost:8081/UploadPost', true);
 
             xhr.upload.addEventListener('progress', function (event) {
                 if (event.lengthComputable) {
