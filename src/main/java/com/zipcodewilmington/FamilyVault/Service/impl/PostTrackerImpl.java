@@ -19,7 +19,6 @@ public class PostTrackerImpl implements PostTrackerService {
 public PostTrackerComment getPostTracker(Integer postId){
     Optional<PostTrackerComment> post =  postTrackerRepository.findById(postId);
     return post.orElse(null);
-
 }
 
     @Override
