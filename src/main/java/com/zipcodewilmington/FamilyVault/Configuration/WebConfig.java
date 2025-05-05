@@ -7,6 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class WebConfig {
+
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
@@ -16,6 +17,7 @@ public class WebConfig {
                         .allowedOrigins("http://localhost:63342") // Port for FAMILYVAULT
                  //      .allowedOrigins("http://localhost:3000") // Temporarily added Port for post section of Flixxer
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
+
             }
         };
     }
