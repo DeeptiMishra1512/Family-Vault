@@ -9,17 +9,19 @@ import java.sql.Timestamp;
 public class PostTrackerComment {
 
 /**
- Field        | Type          | Null | Key | Default | Extra |
-+--------------+---------------+------+-----+---------+-------+
-| Post_Id      | varchar(100)  | NO   | PRI | NULL    |       |
-| Media_Id     | varchar(255)  | NO   | MUL | NULL    |       |
-| User_Id      | varchar(255)  | YES  | MUL | NULL    |       |
-| Likes        | tinyint(1)    | YES  |     | NULL    |       |
-| Comment      | varchar(2000) | YES  |     | NULL    |       |
-| ActivityTime | timestamp     | YES  |     | NULL    |       |
-+--------------+---------------+------+-----+---------+-------+
+    mysql> desc posttracker_comment;
++---------------+---------------+------+-----+---------+----------------+
+        | Field         | Type          | Null | Key | Default | Extra          |
+            +---------------+---------------+------+-----+---------+----------------+
+            | Post_Id       | int           | NO   | PRI | NULL    | auto_increment |
+            | Media_Id      | int           | NO   |     | NULL    |                |
+            | User_Id       | varchar(255)  | YES  |     | NULL    |                |
+            | Comment       | varchar(2000) | YES  |     | NULL    |                |
+            | activity_time | timestamp     | YES  |     | NULL    |                |
+            +---------------+---------------+------+-----+---------+----------------+
+            5 rows in set (0.03 sec)
+*/
 
- */
 
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)

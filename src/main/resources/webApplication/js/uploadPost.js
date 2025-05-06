@@ -41,7 +41,7 @@
             // Create FormData object
             const formData = new FormData();
             formData.append('description', description);
-            if (file.type === 'video/mp4' || 'video/quicktime'){
+            if(file.type === 'video/mp4' || file.type === 'video/quicktime'){
                formData.append('video', file);
             }else{
                formData.append('image', file);
@@ -52,7 +52,7 @@
 
             // AJAX request to server
             const xhr = new XMLHttpRequest();
-            xhr.open('POST', 'http://localhost:8080/UploadPost', true);
+            xhr.open('POST', 'http://localhost:8081/UploadPost', true);
 
             xhr.upload.addEventListener('progress', function (event) {
                 if (event.lengthComputable) {

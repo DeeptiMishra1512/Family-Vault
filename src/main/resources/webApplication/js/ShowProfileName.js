@@ -1,6 +1,6 @@
 //################## Fetch User Name to display under profile picture #####################//
         function fetchUserProfile(userId) {
-            fetch('http://localhost:8080/GetUserProfile?userId=deepti15')
+            fetch('http://localhost:8081/GetUserProfile?userId=deepti15')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error("Failed to fetch user profile");

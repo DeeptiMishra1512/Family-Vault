@@ -23,31 +23,33 @@
             justify-content: space-between; /* Space between elements */
             background-color:#154360; /* Header background color */
             padding: 10px 20px; /* Add padding around the header */
-            height: 100px; /* Set a fixed height for the header */
+            height: 70px; /* Set a fixed height for the header */
         }
 
-        /* Logo and Link Styling */
+        /* Family Vault Logo */
         .lesson-link img {
-            width: 130px; /* Set a fixed width for the images */
-            height: auto; /* Maintain aspect ratio */
-            border-radius: 95px;
+            width: 75px; /* Set a fixed width for the images */
+            height: 70px; /* Maintain aspect ratio */
+            border-radius: 150px;
 
         }
 
+        /* Profile picture  */
         .zip-link img {
-                    width: 100px; /* Set a fixed width for the images */
-                    height: auto; /* Maintain aspect ratio */
-                    border-radius: 55px; /* Adjust the radius for more or less rounded corners */
+                    width: 60px; /* Set a fixed width for the images */
+                    height: 60px; /* Maintain aspect ratio */
+                    border-radius: 50px; /* Adjust the radius for more or less rounded corners */
+                    margin-top: 5px;
                 }
-
+        /* User Name  */
         .zip-link p {
                     font-size: 1rem; /* Adjust font size as needed */
                     color: white; /* Adjust color as needed */
-                    margin-top: 2px; /* Add spacing between image and text */
+                    margin-top: 0.5px; /* Add spacing between image and text */
                     text-align: center;
         }
 
-        /* Title Styling */
+        /* Title Styling ------- Not needed for now */
         .title h1 {
             font-size: 2.5rem; /* Adjust font size */
             color: white; /* Text color */
@@ -94,7 +96,7 @@
             font-size: 1rem;
             margin-bottom: 10px; /* Spacing between buttons */
             flex-grow: 1;
-            width : 210px;
+            width : 200px;
         }
          /* Ensure all buttons are the same size */
         .nav-button {
