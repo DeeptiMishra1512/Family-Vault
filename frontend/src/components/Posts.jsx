@@ -1,6 +1,6 @@
 // src/components/Posts.jsx
 import React, { useEffect, useState } from 'react';
-import PostCard from './PostCard';
+import CreatePost from './CreatePost';
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
@@ -37,7 +37,7 @@ const Posts = () => {
   return (
     <div className="posts-container">
       {posts.map((post) => (
-        <PostCard key={post.mediaId} post={post} userId={userId} />
+        <CreatePost key={post.mediaId} post={post} userId={userId} />
       ))}
     </div>
   );
