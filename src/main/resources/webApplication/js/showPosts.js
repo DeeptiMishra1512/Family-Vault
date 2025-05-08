@@ -1,7 +1,7 @@
 window.onload = fetchAllPosts();
 
 function fetchAllPosts() {
-    const userId = "deepti15";
+    const userId = "Deepti Mishra";
     const rightPanel = document.getElementById('right-panel');
     rightPanel.innerHTML = ""; // Clear existing content to avoid duplication
 
