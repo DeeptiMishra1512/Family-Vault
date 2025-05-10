@@ -5,7 +5,7 @@ function fetchAllPosts() {
     const rightPanel = document.getElementById('right-panel');
     rightPanel.innerHTML = ""; // Clear existing content to avoid duplication
 
-    // Add a loading message or spinner
+    // Add a loading message if the process
     const loadingMessage = document.createElement("p");
     loadingMessage.textContent = "Loading posts...";
     loadingMessage.style.textAlign = "center";
@@ -15,7 +15,7 @@ function fetchAllPosts() {
     fetch(`http://localhost:8081/getAllMediaByUserId?userId=${userId}`)
         .then(response => response.json())
         .then(data => {
-            // Clear the loading message
+
             rightPanel.innerHTML = "";
 
             // Handle case where no posts are returned
