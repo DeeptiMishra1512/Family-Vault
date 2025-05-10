@@ -28,6 +28,7 @@ const [comments, setComments] = useState([]);
     } else if (post.type === 'photo') {
       return <img src={post.filePath} alt="Post media" style={styles.media} />;
     }
+
     return null;
   };
 
