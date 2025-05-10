@@ -1,7 +1,7 @@
 window.onload = fetchProfileData;
 
 function fetchProfileData() {
-    fetch('http://localhost:8081/GetUserProfile?userId=deepti15')
+    fetch('http://localhost:8081/GetUserProfile?userId=Deepti Mishra')
         .then(response => response.json())
         .then(data => {
             const rightPanel = document.getElementById('right-panel');

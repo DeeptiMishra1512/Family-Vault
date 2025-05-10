@@ -6,7 +6,7 @@ const Posts = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const userId = 'deepti15';
+  const userId = 'Deepti Mishra';
 
   useEffect(() => {
     fetch(`http://localhost:8081/getAllMediaByUserId?userId=${userId}`)

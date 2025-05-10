@@ -6,7 +6,7 @@ import java.util.List;
 
 public class UserPost {
 
-    //Make list of post of type Media
+    //Make list of post of Media type
     //Use user ID to fetch the list of posts.
 
     private String userId;

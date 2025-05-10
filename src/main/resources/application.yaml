@@ -9,7 +9,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/FamilyVault
     username: root
-    password: Oracle@1512
+    password: Mysql@2810
   jpa:
     database: mysql
     show-sql: true
