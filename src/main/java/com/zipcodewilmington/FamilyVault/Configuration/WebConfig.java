@@ -14,8 +14,7 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**") // Allow all paths
-                        .allowedOrigins("http://localhost:63342") // Port for FAMILYVAULT
-                 //      .allowedOrigins("http://localhost:3000") // Temporarily added Port for post section of Flixxer
+                        .allowedOrigins("http://localhost:63342")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
 
             }

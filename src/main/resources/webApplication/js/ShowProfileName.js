@@ -1,6 +1,6 @@
 //################## Fetch User Name to display under profile picture #####################//
         function fetchUserProfile(userId) {
-            fetch('http://localhost:8081/GetUserProfile?userId=deepti15')
+            fetch('http://localhost:8081/GetUserProfile?userId=Deepti Mishra')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error("Failed to fetch user profile");
@@ -19,7 +19,6 @@
                     const zipLink = document.querySelector(".zip-link");
                     zipLink.appendChild(userNameElement);
 
-                    // Optional: Use profilePictureUrl if you have profile images
                     const profileImage = zipLink.querySelector("img");
                     if (profile.profilePictureUrl) {
                         profileImage.src = profile.profilePictureUrl;
@@ -31,7 +30,7 @@
 
 
         // Call the function with the user's ID
-        const userId = "deepti15"; // Replace with dynamic userId as needed
+        const userId = "Deepti Mishra";
         fetchUserProfile(userId);
 
 }

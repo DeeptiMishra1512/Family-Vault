@@ -34,7 +34,7 @@ const [comments, setComments] = useState([]);
   return (
     <div style={styles.card}>
       <div style={styles.userInfo}>
-        <img src="/logos/profileLogo.png" alt="User" style={styles.avatar} />
+        <img src="/logos/profileLogo.png" alt="User" style={styles.profilePic} />
         <span style={styles.username}>{post.userId || 'Anonymous User'}</span>
       </div>
 
@@ -43,20 +43,20 @@ const [comments, setComments] = useState([]);
       {renderMedia()}
 
       <label style={styles.text}>{formatDate(post.uploadDate)}</label>
-
+{/*
      <LikeButton mediaId={post.mediaId} userId={userId} />
 
       <div style={{ marginTop: '10px' }}>
         {comments.map(comment => (
           comment.comment && (
             <div key={comment.activityTime} style={styles.commentBox}>
-              <img src="/logos/profileLogo.png" alt="User" style={styles.avatar} />
+              <img src="/logos/profileLogo.png" alt="User" style={styles.profilePic} />
               <span style={styles.commentText}>{comment.comment}</span>
             </div>
           )
         ))}
       </div>
-
+*/}
       <CommentSection
         mediaId={post.mediaId}
         userId={userId}
@@ -99,7 +99,7 @@ const styles = {
     alignItems: 'center',
     marginBottom: '10px',
   },
-  avatar: {
+  profilePic: {
     width: '40px',
     height: '40px',
     borderRadius: '50%',
