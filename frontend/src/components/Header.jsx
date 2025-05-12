@@ -24,24 +24,26 @@ const styles = {
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '20px 20px',
-    backgroundColor: '#1b414b',
-    height: '60px'
+    backgroundColor: '#064d61',
+    height: '50px'
 
   },
   zipLink: {
     display: 'flex',
     alignItems: 'center',
-    gap: '20px'
+    gap: '30px',
   },
   userName: {
     fontSize: '16px',
     fontWeight: '500',
-    margin: '0'
+    margin: '10',
+    color: 'white'
   },
   image: {
     height: '60px',
     cursor: 'pointer',
-    padding: '10px'
+    padding: '10px',
+    border: '5px'
   }
 };
 

@@ -33,7 +33,8 @@ const styles = {
   },
   rightPanel: {
     flex: 1,
-    padding: '20px'
+    padding: '20px',
+    overflowY: 'auto'
   }
 };
 

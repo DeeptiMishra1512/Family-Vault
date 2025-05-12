@@ -1,21 +1,24 @@
 import React, { useState } from 'react';
+import { FaThumbsUp } from 'react-icons/fa';
 
 function LikeButton() {
   const [likes, setLikes] = useState(0);
   const [liked, setLiked] = useState(false);
 
   const handleLike = () => {
-    // Use the functional form to safely update the state based on previous values
-    setLiked(prevLiked => {
-      setLikes(prevLikes => prevLiked ? prevLikes - 1 : prevLikes + 1);
-      return !prevLiked;
-    });
+    if (liked) {
+      setLikes(prev => prev - 1);
+    } else {
+      setLikes(prev => prev + 1);
+    }
+    setLiked(!liked);
   };
 
   return (
     <div style={styles.container}>
       <button onClick={handleLike} style={styles.button}>
-        {liked ? 'Liked' : 'Like'}
+          <FaThumbsUp color={liked ? 'navy' : '#fff'} />
+{/*         {liked ? 'Unlike' : 'Like'} */}
       </button>
       <p>{likes} {likes === 1 ? 'Like' : 'Likes'}</p>
     </div>
