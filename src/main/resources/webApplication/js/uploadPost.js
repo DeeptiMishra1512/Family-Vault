@@ -60,7 +60,13 @@
                     uploadStatus.textContent = `Uploading: ${Math.round(percent)}%`;
                 }
             });
-
+<div id="main">
+        {/* Left Panel */}
+        <div id="left-panel">
+          <button
+            className="nav-button"
+            onClick={() => (window.location.href = '/UserProfileUpload')}
+          >
             xhr.onload = function () {
                 if (xhr.status === 200) {
                     uploadStatus.textContent = 'Upload successful!';
