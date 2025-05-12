@@ -44,7 +44,7 @@ const [comments, setComments] = useState([]);
       {renderMedia()}
 
       <label style={styles.text}>{formatDate(post.uploadDate)}</label>
-{/*
+
      <LikeButton mediaId={post.mediaId} userId={userId} />
 
       <div style={{ marginTop: '10px' }}>
@@ -57,7 +57,7 @@ const [comments, setComments] = useState([]);
           )
         ))}
       </div>
-*/}
+
       <CommentSection
         mediaId={post.mediaId}
         userId={userId}

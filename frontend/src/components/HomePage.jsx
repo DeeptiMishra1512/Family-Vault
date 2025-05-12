@@ -11,7 +11,7 @@ const HomePage = () => {
 
   const fetchAllPosts = () => {
     console.log('Fetching all posts...');
-    // Hook your fetch logic here
+    // fetch logic here
   };
 
   return (
