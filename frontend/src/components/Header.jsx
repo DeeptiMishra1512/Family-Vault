@@ -18,6 +18,7 @@ const Header = () => {
   );
 };
 
+
 const styles = {
   header: {
     display: 'flex',
