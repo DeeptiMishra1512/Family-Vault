@@ -11,10 +11,10 @@ const Sidebar = () => {
   return (
     <div style={styles.sidebar}>
       <SidebarButton label="Home" onClick={() => navigate('/')} />
-      <SidebarButton label="Add Connections" onClick={() => navigate('/add-connections')} />
-      <SidebarButton label="Add Group" onClick={() => navigate('/add-group')} />
-      <SidebarButton label="Add Post" onClick={() => navigate('/uploadpost')} />
       <SidebarButton label="User Profile" onClick={() => navigate('/profile')} />
+      <SidebarButton label="Add Post" onClick={() => navigate('/uploadpost')} />
+      <SidebarButton label="Add New Connections" onClick={() => navigate('/add-connections')} />
+      <SidebarButton label="Create Group" onClick={() => navigate('/add-group')} />
       <SidebarButton label="Logout" onClick={handleLogout} />
     </div>
   );
