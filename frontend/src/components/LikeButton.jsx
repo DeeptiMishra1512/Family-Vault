@@ -6,12 +6,8 @@ function LikeButton() {
   const [liked, setLiked] = useState(false);
 
   const handleLike = () => {
-    if (liked) {
-      setLikes(prev => prev - 1);
-    } else {
-      setLikes(prev => prev + 1);
-    }
-    setLiked(!liked);
+    liked ? setLikes(prev => prev - 1) : setLikes(prev => prev + 1);
+       setLiked(!liked);
   };
 
   return (

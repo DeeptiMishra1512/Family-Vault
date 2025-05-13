@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+//import UploadPost from './UploadPost';
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const Sidebar = () => {
     <div style={styles.sidebar}>
       <SidebarButton label="Home" onClick={() => navigate('/')} />
       <SidebarButton label="User Profile" onClick={() => navigate('/profile')} />
-      <SidebarButton label="Add Post" onClick={() => navigate('/uploadpost')} />
+      <SidebarButton label="Add Post" onClick={() => navigate('/UploadPost')} />
       <SidebarButton label="Add New Connections" onClick={() => navigate('/add-connections')} />
       <SidebarButton label="Create Group" onClick={() => navigate('/add-group')} />
       <SidebarButton label="Logout" onClick={handleLogout} />

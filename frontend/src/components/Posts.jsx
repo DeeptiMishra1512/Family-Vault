@@ -1,7 +1,9 @@
-// src/components/Posts.jsx
 import React, { useEffect, useState } from 'react';
 import CreatePost from './CreatePost';
 
+
+//This file works for fetching all the posts when the page loads
+//Check App.jsx where Posts.jsx is being rendered as the nested component of MainLayout
 const Posts = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
