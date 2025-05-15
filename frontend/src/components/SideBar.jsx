@@ -6,7 +6,7 @@ const Sidebar = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Implement logout logic here
+    // Implement logout logic here when Authentication logic is implemented
   };
 
   return (

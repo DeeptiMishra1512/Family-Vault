@@ -7,12 +7,12 @@ const Header = () => {
 
   return (
     <div id="header" style = {styles.header}>
-      <div className="lesson-link" onClick={() => navigate('/')}>
+      <div className="VaultImage" onClick={() => navigate('/')}>
         <img src="/logos/Vault.png" alt="Vault Logo" style = {styles.image}/>
       </div>
-      <div className="zip-link">
+      <div className="profileImage" onClick={() => navigate('/profile')}>
         <img src="/logos/profileLogo.png" alt="Profile" style= {styles.image} />
-        <p id="user-name">Deepti Mishra</p>
+        <p id="user-name" style= {styles.userName}>Deepti Mishra </p>
       </div>
     </div>
   );
@@ -27,24 +27,19 @@ const styles = {
     padding: '20px 20px',
     backgroundColor: '#064d61',
     height: '50px'
+  },
+   userName: {
+    fontSize: '20px',
+    fontWeight: '600',
+    margin: '30',
+    color: 'white',
 
-  },
-  zipLink: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '30px',
-  },
-  userName: {
-    fontSize: '16px',
-    fontWeight: '500',
-    margin: '10',
-    color: 'white'
   },
   image: {
     height: '60px',
     cursor: 'pointer',
     padding: '10px',
-    border: '5px'
+    border: '15px'
   }
 };
 
