@@ -14,8 +14,8 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**") // Allow all paths
-                  //      .allowedOrigins("http://localhost:63342")
-                        .allowedOrigins("http://localhost:3000")
+                  //      .allowedOrigins("http://localhost:63342")  //For JS HTML CSS
+                        .allowedOrigins("http://localhost:3000")  //For React
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
 
             }
