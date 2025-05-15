@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-//import UploadPost from './UploadPost';
+import UploadPost from './UploadPost';
 
 const Sidebar = () => {
   const navigate = useNavigate();

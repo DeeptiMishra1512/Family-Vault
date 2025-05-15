@@ -66,7 +66,7 @@ public class SavePostController {
 
             mediaRepository.save(media);
 
-            return ResponseEntity.ok("Post saved successfully");
+            return ResponseEntity.ok("Post Uploaded successfully");
 
         } catch (IOException e) {
             e.printStackTrace();
