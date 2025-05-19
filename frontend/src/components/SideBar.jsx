@@ -12,7 +12,7 @@ const Sidebar = () => {
   return (
     <div style={styles.sidebar}>
       <SidebarButton label="Home" onClick={() => navigate('/')} />
-      <SidebarButton label="User Profile" onClick={() => navigate('/profile')} />
+      <SidebarButton label="User Profile" onClick={() => navigate('/Profile')} />
       <SidebarButton label="Add Post" onClick={() => navigate('/UploadPost')} />
       <SidebarButton label="Add New Connections" onClick={() => navigate('/add-connections')} />
       <SidebarButton label="Create Group" onClick={() => navigate('/add-group')} />

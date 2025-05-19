@@ -1,17 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import LikeButton from './LikeButton';
 import CommentSection from './CommentSection';
 
+
+//This Jsx file is used to create each post block(media + comment box + like button)
+//CreatePost is used in Post.Jsx to show posts when page loads for the first time.
 const CreatePost = ({ post, userId }) => {
-const [comments, setComments] = useState([]);
-
-  useEffect(() => {
-    fetch(`http://localhost:8081/getAllPostTrackerByMediaId?mediaId=${post.mediaId}`)
-      .then(res => res.json())
-      .then(data => setComments(data))
-      .catch(err => console.error('Error fetching comments:', err));
-  }, [post.mediaId]);
-
   const formatDate = (dateStr) => {
     const date = new Date(dateStr);
     return date.toLocaleDateString('en-US', { month: 'short', day: '2-digit' });
@@ -45,30 +39,10 @@ const [comments, setComments] = useState([]);
 
       <label style={styles.text}>{formatDate(post.uploadDate)}</label>
 
-     <LikeButton mediaId={post.mediaId} userId={userId} />
+      <LikeButton mediaId={post.mediaId} userId={userId} />
 
-      <div style={{ marginTop: '10px' }}>
-        {comments.map(comment => (
-          comment.comment && (
-            <div key={comment.activityTime} style={styles.commentBox}>
-              <img src="/logos/profileLogo.png" alt="User" style={styles.profilePic} />
-              <span style={styles.commentText}>{comment.comment}</span>
-            </div>
-          )
-        ))}
-      </div>
-
-      <CommentSection
-        mediaId={post.mediaId}
-        userId={userId}
-        onCommentAdded={() => {
-          fetch(`http://localhost:8081/getAllPostTrackerByMediaId?mediaId=${post.mediaId}`)
-            .then(res => res.json())
-            .then(data => setComments(data));
-        }
-    }
-
-      />
+      {/* Use the unified CommentSection */}
+      <CommentSection mediaId={post.mediaId} userId={userId} />
     </div>
   );
 };
@@ -114,16 +88,6 @@ const styles = {
     fontSize: '1rem',
     color: '#555',
   },
-  commentBox: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '10px',
-    marginBottom: '10px',
-  },
-  commentText: {
-    fontSize: '1rem',
-    color: '#555',
-  }
 };
 
 export default CreatePost;
