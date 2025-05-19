@@ -44,7 +44,7 @@ public class SavePostController {
 
         try {
             if (image != null && !image.isEmpty()) {
-                String imagePath = "/Volumes/Macintosh HD - Data/DeeptiProjects/Family-Vault/src/main/resources/webApplication/Image/" + image.getOriginalFilename();
+                String imagePath = "/Volumes/Macintosh HD - Data/DeeptiProjects/Family-Vault/frontend/public/Image/" + image.getOriginalFilename();
                 String imagePathDB = "../Image/" + image.getOriginalFilename();
                 image.transferTo(new File(imagePath));
                 media.setFilePath(imagePathDB);
@@ -54,7 +54,7 @@ public class SavePostController {
             }
 
             if (video != null && !video.isEmpty()) {
-                String videoPath = "/Volumes/Macintosh HD - Data/DeeptiProjects/Family-Vault/src/main/resources/webApplication/Video/" + video.getOriginalFilename();
+                String videoPath = "/Volumes/Macintosh HD - Data/DeeptiProjects/Family-Vault/frontend/public/Video/" + video.getOriginalFilename();
                 String videoPathDB = "../Video/" + video.getOriginalFilename();
                 video.transferTo(new File(videoPath));
                 media.setFilePath(videoPathDB);
