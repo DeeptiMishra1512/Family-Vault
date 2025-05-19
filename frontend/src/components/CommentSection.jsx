@@ -1,14 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-function CommentSection() {
+const CommentSection = ({ mediaId, userId }) => {
   const [comment, setComment] = useState('');
   const [commentsList, setCommentsList] = useState([]);
 
+  useEffect(() => {
+    fetch(`http://localhost:8081/getAllPostTrackerByMediaId?mediaId=${mediaId}`)
+      .then((res) => res.json())
+      .then((data) => setCommentsList(data))
+      .catch((err) => console.error('Error fetching comments:', err));
+  }, [mediaId]);
+
   const handleComment = () => {
-    if (comment.trim() !== '') {
-      setCommentsList([...commentsList, comment]);
-      setComment('');
-    }
+    if (comment.trim() === '') return;
+
+    // You'd typically POST the comment to the backend here
+    const newComment = {
+      userId,
+      comment,
+      activityTime: Date.now(), // just for key in frontend
+    };
+
+    setCommentsList([...commentsList, newComment]);
+    setComment('');
   };
 
   return (
@@ -26,15 +40,17 @@ function CommentSection() {
 
       <div style={styles.commentsContainer}>
         {commentsList.map((c, index) => (
-          <p key={index} style={styles.comment}>
-            {c}
-          </p>
+          c.comment && (
+            <div key={c.activityTime || index} style={styles.commentBox}>
+              <img src="/logos/profileLogo.png" alt="User" style={styles.profilePic} />
+              <span style={styles.commentText}>{c.comment}</span>
+            </div>
+          )
         ))}
       </div>
     </div>
   );
-}
-
+};
 
 const styles = {
   container: {
@@ -58,9 +74,20 @@ const styles = {
   commentsContainer: {
     marginTop: '15px',
   },
-  comment: {
-    padding: '6px 0',
-    borderBottom: '1px solid #eee',
+  commentBox: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px',
+    marginBottom: '10px',
+  },
+  profilePic: {
+    width: '30px',
+    height: '30px',
+    borderRadius: '50%',
+  },
+  commentText: {
+    fontSize: '1rem',
+    color: '#555',
   },
 };
 
