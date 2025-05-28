@@ -9,7 +9,9 @@ const Header = () => {
     <div id="header" style = {styles.header}>
       <div className="VaultImage" onClick={() => navigate('/')}>
         <img src="/logos/Vault.png" alt="Vault Logo" style = {styles.logo}/>
+
       </div>
+      <p id="App-name" style= {styles.appName}>Family Vault </p>
       <div className="profileImage" onClick={() => navigate('/profile')}>
         <img src="/logos/profileLogo.png" alt="Profile" style= {styles.image} />
         <p id="user-name" style= {styles.userName}>Deepti Mishra </p>
@@ -36,6 +38,15 @@ const styles = {
      marginBottom: '10px',
      backgroundColor: 'navy',
   },
+  appName: {
+      fontSize: '18px',
+      fontWeight: '800',
+      marginTop: '4px',
+      marginRight: '1120px',
+      alignItems: 'left',
+      color: 'white',
+
+    },
   userName: {
     fontSize: '14px',
     fontWeight: '500',
