@@ -54,7 +54,7 @@ const styles = {
     margin: '0 auto',
     padding: '15px',
     border: '1px solid #ccc',
-    borderRadius: '8px',
+    borderRadius: '10px',
     backgroundColor: '#f9f9f9',
     boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
     display: 'flex',
@@ -64,10 +64,10 @@ const styles = {
   },
   media: {
     width: '100%',
-    maxWidth: '800px',
-    height: '400px',
-    borderRadius: '8px',
-    objectFit: 'cover',
+   // maxWidth: '900px',
+    maxHeight: '600px',
+    borderRadius: '10px',
+    objectFit: 'contain',
   },
   userInfo: {
     display: 'flex',

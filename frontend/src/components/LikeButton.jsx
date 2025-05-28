@@ -8,6 +8,7 @@ function LikeButton() {
   const handleLike = () => {
     liked ? setLikes(prev => prev - 1) : setLikes(prev => prev + 1);
        setLiked(!liked);
+
   };
 
   return (

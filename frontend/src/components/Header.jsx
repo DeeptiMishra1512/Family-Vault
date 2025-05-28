@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <div id="header" style = {styles.header}>
       <div className="VaultImage" onClick={() => navigate('/')}>
-        <img src="/logos/Vault.png" alt="Vault Logo" style = {styles.image}/>
+        <img src="/logos/Vault.png" alt="Vault Logo" style = {styles.logo}/>
       </div>
       <div className="profileImage" onClick={() => navigate('/profile')}>
         <img src="/logos/profileLogo.png" alt="Profile" style= {styles.image} />
@@ -24,23 +24,39 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '20px 20px',
+    padding: '10px 20px',
     backgroundColor: '#064d61',
-    height: '50px'
+    height: '80px', // updated to fit image and name
   },
-   userName: {
-    fontSize: '20px',
-    fontWeight: '600',
-    margin: '30',
+  logo: {
+     height: '60px', // updated to fit in header
+     cursor: 'pointer',
+     padding: '0',
+     borderRadius: '50%',
+     marginBottom: '10px',
+     backgroundColor: 'navy',
+  },
+  userName: {
+    fontSize: '14px',
+    fontWeight: '500',
+    marginTop: '4px',
+    alignItems: 'center',
     color: 'white',
-
   },
   image: {
     height: '60px',
     cursor: 'pointer',
-    padding: '10px',
-    border: '15px'
+    padding: '0',
+    borderRadius: '50%',
+    marginTop: '10px',
+  },
+  profile: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    cursor: 'pointer',
   }
+
 };
 
 
