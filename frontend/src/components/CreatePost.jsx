@@ -1,29 +1,48 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import LikeButton from './LikeButton';
 import CommentSection from './CommentSection';
 
-
-//This Jsx file is used to create each post block(media + comment box + like button)
-//CreatePost is used in Post.Jsx to show posts when page loads for the first time.
 const CreatePost = ({ post, userId }) => {
+  const [mediaUrl, setMediaUrl] = useState('');
+
+  useEffect(() => {
+    const fetchMedia = async () => {
+      try {
+        const response = await fetch(`http://localhost:8081/S3streamMedia?key=${post.filePath}`);
+        if (!response.ok) throw new Error('Failed to fetch media');
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+        setMediaUrl(url);
+      } catch (err) {
+        console.error('Error loading media:', err);
+      }
+    };
+
+    fetchMedia();
+  }, [post.filePath]);
+
   const formatDate = (dateStr) => {
     const date = new Date(dateStr);
     return date.toLocaleDateString('en-US', { month: 'short', day: '2-digit' });
   };
 
   const renderMedia = () => {
-    if (post.type === 'Video') {
+    if (!mediaUrl) return <p>Loading media...</p>;
+
+    if (post.type?.toLowerCase().includes('video')) {
       return (
         <video controls style={styles.media}>
-          <source src={post.filePath} type="video/mp4" />
+          <source src={mediaUrl} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       );
-    } else if (post.type === 'photo') {
-      return <img src={post.filePath} alt="Post media" style={styles.media} />;
+  //Note: post.type changed from image to photo
+  //because in table media type is being saved as photo and not image
+    } else if (post.type?.toLowerCase().includes('photo')) {
+      return <img src={mediaUrl} alt="Post media" style={styles.media} />;
     }
 
-    return null;
+    return <p>Unsupported media type</p>;
   };
 
   return (
@@ -40,8 +59,6 @@ const CreatePost = ({ post, userId }) => {
       <label style={styles.text}>{formatDate(post.uploadDate)}</label>
 
       <LikeButton mediaId={post.mediaId} userId={userId} />
-
-      {/* Use the unified CommentSection */}
       <CommentSection mediaId={post.mediaId} userId={userId} />
     </div>
   );
@@ -64,7 +81,6 @@ const styles = {
   },
   media: {
     width: '100%',
-   // maxWidth: '900px',
     maxHeight: '600px',
     borderRadius: '10px',
     objectFit: 'contain',
