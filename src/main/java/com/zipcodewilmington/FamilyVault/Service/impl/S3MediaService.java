@@ -1,5 +1,4 @@
 package com.zipcodewilmington.FamilyVault.Service.impl;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,15 +10,8 @@ import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.*;
-import software.amazon.awssdk.services.s3.presigner.S3Presigner;
-import software.amazon.awssdk.services.s3.presigner.model.GetObjectPresignRequest;
-import software.amazon.awssdk.services.s3.presigner.model.PresignedGetObjectRequest;
 import software.amazon.awssdk.services.s3.model.GetObjectRequest;
-import java.net.URL;
-import java.time.Duration;
-
 import java.io.File;
-import java.net.URL;
 import java.util.Optional;
 
 @Service
@@ -28,7 +20,7 @@ public class S3MediaService {
     private static final Logger log = LoggerFactory.getLogger(S3MediaService.class);
     private final S3Client s3Client;
     private final String bucketName;
- //   private final S3Presigner s3Presigner;
+
 
     public S3MediaService(@Value("${aws.region}") String region,
                           @Value("${aws.s3.bucketName}") String bucketName) {
@@ -37,26 +29,7 @@ public class S3MediaService {
                 .region(Region.of(region))
                 .credentialsProvider(DefaultCredentialsProvider.create())
                 .build();
-//        this.s3Presigner = S3Presigner.builder()
-//                .region(Region.of(region))
-//                .credentialsProvider(DefaultCredentialsProvider.create())
-//                .build();
     }
-
-//    public URL generatePresignedUrl(String key, int expirationMinutes) {
-//        GetObjectRequest getObjectRequest = GetObjectRequest.builder()
-//                .bucket(bucketName)
-//                .key(key)
-//                .build();
-//
-//        GetObjectPresignRequest presignRequest = GetObjectPresignRequest.builder()
-//                .signatureDuration(Duration.ofMinutes(expirationMinutes))
-//                .getObjectRequest(getObjectRequest)
-//                .build();
-//
-//        PresignedGetObjectRequest presignedRequest = s3Presigner.presignGetObject(presignRequest);
-//        return presignedRequest.url();
-//    }
 
 
     /** Service to Upload media to the S3 bucket at the specified key */

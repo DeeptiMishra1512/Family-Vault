@@ -17,7 +17,7 @@ const CommentSection = ({ mediaId, userId }) => {
       .catch((err) => console.error('Error fetching comments:', err));
   }, [mediaId]);
 
-  // Prevent scroll-to-top by blurring focused elements and overriding internal emoji picker behavior
+  // Prevent scroll-to-top
   useEffect(() => {
     if (showEmojiPicker && pickerRef.current) {
       const activeElement = document.activeElement;
