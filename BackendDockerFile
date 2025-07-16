@@ -1,0 +1,6 @@
+FROM openjdk:17-jdk-alpine
+WORKDIR /familyVault-springBoot-docker
+COPY target/Family-Vault-1.0-SNAPSHOT.jar /familyVault-springBoot-docker/Family-Vault-1.0-SNAPSHOT.jar
+EXPOSE 8080
+CMD ["java", "-jar", "/familyVault-springBoot-docker/Family-Vault-1.0-SNAPSHOT.jar"]
+
