@@ -1,9 +1,0 @@
-FROM node:17-alpine3.12
-WORKDIR /familyvault-react-docker/
-COPY public/ /familyvault-react-docker/public
-COPY src/ /familyvault-react-docker/src
-COPY package.json /familyvault-react-docker/
-RUN npm install
-COPY . .
-EXPOSE 3000
-CMD ["npm", "start"]
