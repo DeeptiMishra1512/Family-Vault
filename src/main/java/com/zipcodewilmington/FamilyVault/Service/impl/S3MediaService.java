@@ -1,6 +1,7 @@
 package com.zipcodewilmington.FamilyVault.Service.impl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,9 @@ public class S3MediaService {
 
     public S3MediaService(@Value("${aws.region}") String region,
                           @Value("${aws.s3.bucketName}") String bucketName) {
+
         this.bucketName = bucketName;
+
         this.s3Client = S3Client.builder()
                 .region(Region.of(region))
                 .credentialsProvider(DefaultCredentialsProvider.create())
@@ -38,7 +41,7 @@ public class S3MediaService {
             PutObjectRequest putRequest = PutObjectRequest.builder()
                     .bucket(bucketName)
                     .key(s3Key)
-                    .acl(ObjectCannedACL.PRIVATE) // ensure it's private
+                    .acl(ObjectCannedACL.PRIVATE) // Access Control List is set to private
                     .build();
 
             s3Client.putObject(putRequest, RequestBody.fromFile(file));

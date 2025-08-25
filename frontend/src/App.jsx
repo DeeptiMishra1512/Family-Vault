@@ -10,11 +10,10 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        {/* Main Layout wrapper with nested pages inside */}
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Posts />} />
-           <Route path="/Profile" element={<Profile />} />
-          <Route path="/UploadPost" element={<UploadPost />} />
+          <Route path="Profile" element={<Profile />} />
+          <Route path="UploadPost" element={<UploadPost />} />
         </Route>
       </Routes>
     </Router>
